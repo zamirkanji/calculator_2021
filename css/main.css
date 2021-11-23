@@ -25,11 +25,23 @@ html, body {
     flex-direction: column;
     
 }
+/* ********************************* ALL BTNS ********************************* */
+
+.btn {
+    margin: 0;
+    padding: 0;
+    border: 3px solid black;
+    background-color: rgb(37, 92, 92);
+    width: 100%;
+    height: 100%;
+}
+
+
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
     flex: 1;
-    border: 2px solid rgb(37, 92, 92);
+    border: 1px solid rgb(37, 92, 92);
     display: flex;
     flex-direction: column;
     /* justify-content: flex-end; */
@@ -54,7 +66,7 @@ html, body {
 .clear-container {
     /* height: 100%; */
     flex: 1;
-    border: 2px solid rgb(37, 92, 92);
+    border: 1px solid rgb(37, 92, 92);
     display: flex;
     flex-direction: row;
 }
@@ -67,11 +79,36 @@ html, body {
     border: 1px solid rgb(37, 92, 92);
 }
 
+
+
+/* ********************************* BOTTOM CONTAINER ********************************* */
+
+.bottom-half-container {
+    flex: 4;
+    display: flex;
+    
+}
+
+.left-side-container {
+    flex: 2;
+    border: 1px solid rgb(37, 92, 92);
+    display: flex;
+    /* flex-flow: row wrap; */
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+}
+
+.right-side-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /* ********************************* 1-9 CONTAINER ********************************* */
 
 .one_to_nine_container {
     flex: 2;
-    border: 2px solid rgb(37, 92, 92);
+    border: 1px solid rgb(37, 92, 92);
     display: flex;
     /* flex-flow: row wrap; */
     flex-direction: row;
@@ -119,7 +156,7 @@ html, body {
 
 .operator-container {
     flex: 1;
-    border: 2px solid rgb(37, 92, 92);
+    border: 1px solid rgb(37, 92, 92);
     display: flex;
     flex-direction: column;
 }
@@ -150,7 +187,7 @@ html, body {
 
 .bottom-btns-container {
     flex: .5;
-    border: 2px solid rgb(37, 92, 92);
+    border: 1px solid rgb(37, 92, 92);
     display: flex;
 }
 
@@ -166,3 +203,6 @@ html, body {
     flex: 1;
     border: 1px solid rgb(37, 92, 92);
 }
+
+
+
