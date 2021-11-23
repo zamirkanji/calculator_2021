@@ -2,32 +2,165 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
     /* width: 100%; */
-    
+    overflow: hidden;
 }
 
 body { 
-    /* background-color: black; */
+    background-color: black;
     min-height: 100vh; 
 }
 
 .main-container {
-    background-color: black;
-    width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     /* background-color: darkslategray; */
 }
 
+/* ********************************* CALCULATOR CONTAINER ********************************* */
+
 .calc-container {
-    width: 390px;
     height: 844px;
+    width: 390px;
     background-color: darkslategray;
-    
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+}
+
+/* ********************************* SCREEN CONTAINER ********************************* */
+.screen-container {
+    width: 100%;
+    height: 15%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+}
+.currentNum {
+    flex: 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.input_output {
+    flex: 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* ********************************* CLEAR CONTAINER ********************************* */
+.clear-container {
+    height: 15%;
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.clear-all-container {
+    flex: 1;
+    border: 1px solid black;
+}
+.clear-entry-container {
+    flex: 1;
+    border: 1px solid black;
+}
+
+/* ********************************* 1-9 CONTAINER ********************************* */
+
+.one_to_nine_container {
+    height: 55%;
+    width: 70%;
+    border: 2px solid black;
+    display: flex;
+    /* flex-flow: row wrap; */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.btn_one_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_two_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_three_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_four_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_five_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_six_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_seven_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_eight_container {
+    border: 1px solid black;
+    flex: 1;
+}
+.btn_nine_container {
+    border: 1px solid black;
+    flex: 1;
+}
+
+/* ********************************* OPERATOR CONTAINER ********************************* */
+
+.operator-container {
+    width: 30%;
+    height: 70%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.divide-container {
+    border: 1px solid black;
+    flex: 1;
+}
+.multiply-container {
+    border: 1px solid black;
+    flex: 1;
+}
+.subtract-container {
+    border: 1px solid black;
+    flex: 1;
+}
+.addition-container {
+    border: 1px solid black;
+    flex: 1;
+}
+.equals-container {
+    border: 1px solid black;
+    flex: 1;
+}
+
+
+
+/* ********************************* BOTTOM BUTTONS CONTAINER ********************************* */
+
+.bottom-btns-container {
+    height: 15%;
+    width: 70%;
+    border: 2px solid black;
 }
