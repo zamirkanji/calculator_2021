@@ -17,69 +17,87 @@ html, body {
 
 .calc-container {
     /* margin: 50px 0; */
+    margin: 0;
+    padding: 0;
     height: 100vh;
     width: 50%;
     min-width: 500px;
-    background-color: black;
+    background-color: rgb(59, 94, 91);
+    border-radius: 20px;
+    /* background-color: black; */
     display: flex;
     flex-direction: column;
     
 }
 /* ********************************* ALL BTNS ********************************* */
 
+p {
+    font-size: 3.5em;
+    font-weight: lighter;
+    color: black;
+}
+
 .btn {
     margin: 0;
     padding: 0;
-    border: 3px solid black;
-    background-color: rgb(37, 92, 92);
+    /* border: 1px solid black; */
+    border: 1px solid rgb(110, 143, 140);
+    background-color: rgb(72, 117, 114);
     width: 100%;
     height: 100%;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: lighter;
+    text-align: center;
+    color: black;
 }
-
-
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
+    /* border: 1px solid black; */
+    border: 1px solid rgb(110, 143, 140);
+    background-color: rgb(72, 117, 114);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     /* justify-content: flex-end; */
 }
 .currentNum {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 10px;
 
 }
 .input_output {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 10px;
+}
+
+#in_out_txt {
+    /* font-size: 24px; */
 }
 
 /* ********************************* CLEAR CONTAINER ********************************* */
 .clear-container {
-    /* height: 100%; */
-    flex: 1;
-    border: 1px solid rgb(37, 92, 92);
+    flex: .5;
     display: flex;
     flex-direction: row;
 }
 .clear-all-container {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
 }
 .clear-entry-container {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
 }
-
-
+.clear-all, .clear-entry {
+    background-color: rgb(110, 143, 140);
+}
 
 /* ********************************* BOTTOM CONTAINER ********************************* */
 
@@ -90,12 +108,9 @@ html, body {
 }
 
 .left-side-container {
-    flex: 2;
-    border: 1px solid rgb(37, 92, 92);
+    flex: 3;
     display: flex;
-    /* flex-flow: row wrap; */
     flex-direction: column;
-    /* flex-wrap: wrap; */
 }
 
 .right-side-container {
@@ -108,47 +123,84 @@ html, body {
 
 .one_to_nine_container {
     flex: 2;
-    border: 1px solid rgb(37, 92, 92);
     display: flex;
-    /* flex-flow: row wrap; */
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.row_1 {
+    flex: 1;
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.row_2 {
+    flex: 1;
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.row_3 {
+    flex: 1;
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 
 .btn_one_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
 }
 .btn_two_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_three_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_four_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_five_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_six_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_seven_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_eight_container {
-    border: 1px solid rgb(37, 92, 92);
-    flex: 1;
+    flex: 1 1 0px;
+    
 }
 .btn_nine_container {
-    border: 1px solid rgb(37, 92, 92);
+    flex: 1 1 0px;
+    
+}
+
+/* ********************************* BOTTOM BUTTONS CONTAINER ********************************* */
+
+.bottom-btns-container {
+    flex: .5;
+    display: flex;
+}
+
+.btn-zero-container {
+    flex: 1;
+}
+.plus_minus-container {
+    flex: 1;
+}
+.decimal-container {
     flex: 1;
 }
 
@@ -156,53 +208,32 @@ html, body {
 
 .operator-container {
     flex: 1;
-    border: 1px solid rgb(37, 92, 92);
     display: flex;
     flex-direction: column;
 }
 .divide-container {
-    border: 1px solid rgb(37, 92, 92);
     flex: 1;
 }
 .multiply-container {
-    border: 1px solid rgb(37, 92, 92);
     flex: 1;
 }
 .subtract-container {
-    border: 1px solid rgb(37, 92, 92);
     flex: 1;
 }
 .addition-container {
-    border: 1px solid rgb(37, 92, 92);
     flex: 1;
 }
 .equals-container {
-    border: 1px solid rgb(37, 92, 92);
     flex: 1;
+    /* background-color: rgb(110, 143, 140) */
+}
+.equals-btn {
+    background-color: rgb(110, 143, 140);
 }
 
 
 
-/* ********************************* BOTTOM BUTTONS CONTAINER ********************************* */
 
-.bottom-btns-container {
-    flex: .5;
-    border: 1px solid rgb(37, 92, 92);
-    display: flex;
-}
-
-.btn-zero-container {
-    flex: 1;
-    border: 1px solid rgb(37, 92, 92);
-}
-.plus_minus-container {
-    flex: 1;
-    border: 1px solid rgb(37, 92, 92);
-}
-.decimal-container {
-    flex: 1;
-    border: 1px solid rgb(37, 92, 92);
-}
 
 
 
