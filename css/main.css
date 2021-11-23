@@ -1,6 +1,7 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+    touch-action: manipulation;
     margin: 0;
     padding: 0;
 }
@@ -20,13 +21,14 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    width: 50%;
-    min-width: 500px;
-    background-color: rgb(59, 94, 91);
+    width: 40%;
+    min-width: 400px;
+    background-color: rgb(72, 117, 114);
     border-radius: 20px;
     /* background-color: black; */
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .6);
     
 }
 /* ********************************* ALL BTNS ********************************* */
@@ -50,6 +52,7 @@ p {
     font-weight: lighter;
     text-align: center;
     color: black;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .4);
 }
 
 /* ********************************* SCREEN CONTAINER ********************************* */
@@ -97,6 +100,7 @@ p {
 }
 .clear-all, .clear-entry {
     background-color: rgb(110, 143, 140);
+    border: 1px solid rgb(72, 117, 114);
 }
 
 /* ********************************* BOTTOM CONTAINER ********************************* */
@@ -229,6 +233,7 @@ p {
 }
 .equals-btn {
     background-color: rgb(110, 143, 140);
+    border:  1px solid rgb(72, 117, 114);
 }
 
 
