@@ -10,7 +10,7 @@
 :root {
     --main-bg-color: rgb(72, 117, 114);
     --light-green: rgb(113, 151, 148);
-    --font-weight: 500;
+    --font-weight: 600;
 }
 html, body {
     padding: 0;
