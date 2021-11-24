@@ -1,40 +1,50 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
     touch-action: manipulation;
     margin: 0;
     padding: 0;
 }
 
+:root {
+    --main-bg-color: rgb(72, 117, 114);
+    --light-green: rgb(113, 151, 148);
+    --font-weight: 500;
+}
 html, body {
     padding: 0;
-    background-color: black;
+    height: 100%;
+    width: 100%;
+    /* background-color: black; */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: var(--font-weight);
 }
 
 /* ********************************* CALCULATOR CONTAINER ********************************* */
 
 .calc-container {
-    /* margin: 50px 0; */
     margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 40%;
-    min-width: 400px;
-    background-color: rgb(72, 117, 114);
-    border-radius: 20px;
-    /* background-color: black; */
+    padding: 4px;
+    min-height: 664px;
+    /* min-height: 664px; */
+    width: 50%;
+    min-width: 390px;
+    background-color: black;
     display: flex;
     flex-direction: column;
-    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .6);
+    border: 5px solid black;
+    border-radius: 20px;
+    /* height: 100vh; */
+
     
 }
 /* ********************************* ALL BTNS ********************************* */
 
 p {
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: lighter;
     color: black;
 }
@@ -42,29 +52,27 @@ p {
 .btn {
     margin: 0;
     padding: 0;
-    /* border: 1px solid black; */
-    border: 1px solid rgb(110, 143, 140);
-    background-color: rgb(72, 117, 114);
+    border: 2px solid black;
+    background-color: var(--light-green);
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    font-size: 1.5em;
+    border-radius: 60px;
+    font-size: 2em;
     font-weight: lighter;
     text-align: center;
     color: black;
-    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .4);
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .1);
 }
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
-    flex: 1;
+    flex: .75;
     /* border: 1px solid black; */
-    border: 1px solid rgb(110, 143, 140);
-    background-color: rgb(72, 117, 114);
-    border-radius: 10px;
+    border: 2px solid black;
+    background-color: var(--main-bg-color);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-end; */
 }
 .currentNum {
     flex: 1;
@@ -85,40 +93,55 @@ p {
 #in_out_txt {
     /* font-size: 24px; */
 }
+#current_txt {
+    color: rgb(110, 143, 140);
+    font-size: 3em;
+}
 
 /* ********************************* CLEAR CONTAINER ********************************* */
 .clear-container {
     flex: .5;
     display: flex;
     flex-direction: row;
+    border-radius: 20px;
+    padding: 4px 0;
+    gap: 4px;
 }
 .clear-all-container {
     flex: 1;
+    
 }
 .clear-entry-container {
     flex: 1;
 }
 .clear-all, .clear-entry {
-    background-color: rgb(110, 143, 140);
-    border: 1px solid rgb(72, 117, 114);
+    border: 2px solid black;
+    background-color: indianred;
 }
 
 /* ********************************* BOTTOM CONTAINER ********************************* */
 
 .bottom-half-container {
-    flex: 4;
+    flex: 3;
     display: flex;
-    
+    margin: 0;
+    padding: 0;
+    gap: 4px ;
 }
 
 .left-side-container {
-    flex: 3;
+    flex: 2;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
+    /* gap: 4px; */
 }
 
 .right-side-container {
     flex: 1;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
 }
@@ -129,30 +152,45 @@ p {
     flex: 2;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    gap: 7px;
+}
+
+.one_to_nine_container > button {
+    border-radius: 40px;
 }
 
 .row_1 {
     flex: 1;
-    /* background-color: burlywood; */
     display: flex;
-    justify-content: space-evenly;
-    align-items: stretch;
+    /* justify-content: space-around; */
+    /* align-items: stretch; */
+    gap: 4px;
 }
 
 .row_2 {
     flex: 1;
-    /* background-color: burlywood; */
     display: flex;
-    justify-content: space-evenly;
-    align-items: stretch;
+    /* justify-content: space-evenly; */
+    /* align-items: stretch; */
+    gap: 4px;
 }
 
 .row_3 {
     flex: 1;
-    /* background-color: burlywood; */
     display: flex;
-    justify-content: space-evenly;
-    align-items: stretch;
+    /* justify-content: space-evenly; */
+    /* align-items: stretch; */
+    gap: 4px;
+}
+
+.row_4 {
+    flex: 1;
+    display: flex;
+    /* justify-content: space-evenly;
+    align-items: stretch; */
+    gap: 4px;
 }
 
 .btn_one_container {
@@ -191,22 +229,24 @@ p {
     
 }
 
-/* ********************************* BOTTOM BUTTONS CONTAINER ********************************* */
 
-.bottom-btns-container {
-    flex: .5;
-    display: flex;
-}
 
 .btn-zero-container {
-    flex: 1;
+    flex: 1 1 0px;
 }
 .plus_minus-container {
-    flex: 1;
+    flex: 1 1 0px;
 }
 .decimal-container {
-    flex: 1;
+    flex: 1 1 0px;
 }
+/* ********************************* BOTTOM BUTTONS CONTAINER ********************************* */
+
+/* .bottom-btns-container {
+    flex: .5;
+    display: flex;
+} */
+
 
 /* ********************************* OPERATOR CONTAINER ********************************* */
 
@@ -214,6 +254,7 @@ p {
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
 .divide-container {
     flex: 1;
@@ -233,7 +274,12 @@ p {
 }
 .equals-btn {
     background-color: rgb(110, 143, 140);
-    border:  1px solid rgb(72, 117, 114);
+    background-color: indianred;
+    border:  2px solid black;
+}
+
+.operator-container > button {
+    /* background-color: var(--main-bg-color); */
 }
 
 
