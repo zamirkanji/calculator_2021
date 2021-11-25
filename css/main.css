@@ -98,7 +98,7 @@ p {
     color: white;
     font-weight: lighter;
 }
-.currentNum {
+.current_num_container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -106,7 +106,7 @@ p {
     margin-right: 10px;
 
 }
-.input_output {
+.input_output_container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
