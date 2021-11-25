@@ -2,9 +2,10 @@
     font-family: Arial, Helvetica, sans-serif;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
-    touch-action: manipulation;
     margin: 0;
     padding: 0;
+    touch-action: manipulation;
+    -webkit-transition-duration: 0.2s; /* Safari */
 }
 
 :root {
@@ -36,8 +37,7 @@ html, body {
     min-height: 664px;
     max-width: 50%;
     min-width: 390px;
-    /* background-color: var(--ind-red); */
-    background-color: black;
+    background-color: var(--light-green);
     display: flex;
     flex-direction: column;
     border: 7px solid black;
@@ -49,7 +49,7 @@ html, body {
 p {
     font-size: 3em;
     font-weight: lighter;
-    color: black;
+    color: var(--main-bg-color);
 }
 
 .btn {
@@ -66,6 +66,15 @@ p {
     color: var(--main-bg-color);
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     /* backdrop-filter: blur(8px); */
+
+    
+}
+.btn:hover {background-color: rgb(0, 0, 0, .9)};
+
+.btn:active {
+  background-color: var(--light-green);
+  box-shadow: 0 2px var(--main-bg-color);
+  transform: translateY(4px);
 }
 
 /* ********************************* SCREEN CONTAINER ********************************* */
@@ -75,8 +84,8 @@ p {
     flex-direction: column;
     background-color: white;
     border: 2px solid var(--main-bg-color);
-    /* box-shadow: -2px -2px -3px 1 rgba(44, 44, 44, 0.9); */
-    border-radius: 20px;
+    box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
+    border-radius: 15px;
     color: white;
     font-weight: lighter;
 }
@@ -107,7 +116,7 @@ p {
 
 /* ********************************* CLEAR CONTAINER ********************************* */
 .clear-container {
-    flex: .25;
+    flex: .4;
     display: flex;
     flex-direction: row;
     /* border-radius: 15px; */
@@ -125,12 +134,13 @@ p {
     border: 2px solid var(--main-bg-color);
     background-color: black;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 20px;
+    border-radius: 15px;
     /* font: white; */
     color: var(--light-green);
     font-weight: lighter;
 }
 
+.clear-all:hover, .clear-entry:hover {background-color: white}
 /* ********************************* BOTTOM CONTAINER ********************************* */
 
 .bottom-half-container {
@@ -285,10 +295,10 @@ p {
 }
 .equals-btn {
     border: 2px solid var(--main-bg-color);
-    /* background-color: var(--ind-red); */
     background-color: black;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 20px;
+    border-radius: 15px;
+    /* font: white; */
     color: var(--light-green);
     font-weight: lighter;
 }
