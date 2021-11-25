@@ -59,7 +59,7 @@ p {
     /* background-color: var(--light-green); */
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 30px;
     font-size: 2em;
     font-weight: lighter;
     text-align: center;
@@ -74,9 +74,9 @@ p {
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 4px solid var(--main-bg-color);
+    border: 2px solid var(--main-bg-color);
     /* box-shadow: -2px -2px -3px 1 rgba(44, 44, 44, 0.9); */
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     font-weight: lighter;
 }
@@ -122,13 +122,12 @@ p {
     flex: 1;
 }
 .clear-all, .clear-entry {
-    border: 3px solid var(--main-bg-color);
-    /* background-color: var(--ind-red); */
+    border: 2px solid var(--main-bg-color);
     background-color: black;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 10px;
+    border-radius: 20px;
     /* font: white; */
-    color: white;
+    color: var(--light-green);
     font-weight: lighter;
 }
 
@@ -179,7 +178,7 @@ p {
     display: flex;
     /* justify-content: space-around; */
     /* align-items: stretch; */
-    gap: 4px;
+    gap: 7px;
 }
 
 .row_2 {
@@ -187,7 +186,7 @@ p {
     display: flex;
     /* justify-content: space-evenly; */
     /* align-items: stretch; */
-    gap: 4px;
+    gap: 7px;
 }
 
 .row_3 {
@@ -195,7 +194,7 @@ p {
     display: flex;
     /* justify-content: space-evenly; */
     /* align-items: stretch; */
-    gap: 4px;
+    gap: 7px;
 }
 
 .row_4 {
@@ -203,7 +202,7 @@ p {
     display: flex;
     /* justify-content: space-evenly;
     align-items: stretch; */
-    gap: 4px;
+    gap: 7px;
 }
 
 .btn_one_container {
@@ -285,13 +284,12 @@ p {
     flex: 1;
 }
 .equals-btn {
-    border: 3px solid var(--main-bg-color);
+    border: 2px solid var(--main-bg-color);
     /* background-color: var(--ind-red); */
     background-color: black;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 10px;
-    /* font: white; */
-    color: white;
+    border-radius: 20px;
+    color: var(--light-green);
     font-weight: lighter;
 }
 
