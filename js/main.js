@@ -5,6 +5,13 @@ const allNumberBtns = document.querySelectorAll('.num-btn');
 const clearAllBtn = document.querySelector('.clear-all');
 const clearEntryBtn = document.querySelector('.clear-entry');
 
+
+const divideBtn = document.querySelector('.divide-btn');
+const multiplyBtn = document.querySelector('.multiply-btn');
+const subtractBtn = document.querySelector('.subtract-btn');
+const additionBtn = document.querySelector('.addition-btn');
+const equalsBtn = document.querySelector('.equals-btn');
+
 let storeCurrentNum = [0];
 
 window.onload = (e) => {
