@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     touch-action: manipulation;
-    -webkit-transition-duration: 0.2s; /* Safari */
+    
 }
 
 :root {
@@ -37,7 +37,9 @@ html, body {
     min-height: 664px;
     max-width: 50%;
     min-width: 390px;
-    background-color: var(--light-green);
+    /* background-color: var(--light-green); */
+    background-color: white;
+    box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     display: flex;
     flex-direction: column;
     border: 7px solid black;
@@ -66,8 +68,10 @@ p {
     color: var(--main-bg-color);
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     /* backdrop-filter: blur(8px); */
-
-    
+    -webkit-transition-duration: 0.2s; /* Safari */
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
 }
 .btn:hover {background-color: rgb(0, 0, 0, .9)};
 
@@ -75,6 +79,13 @@ p {
   background-color: var(--light-green);
   box-shadow: 0 2px var(--main-bg-color);
   transform: translateY(4px);
+}
+  
+.btn:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
 
 /* ********************************* SCREEN CONTAINER ********************************* */
