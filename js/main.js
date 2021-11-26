@@ -16,7 +16,7 @@ const equalsBtn = document.querySelector('.equals-btn');
 
 //default array (onload) 0
 let storeCurrentNum = [0];
-let temp = [];
+let temp = [0];
 
 //windows on load show default array 
 window.onload = (e) => {
