@@ -1,10 +1,13 @@
 // console.log("Test");
 //**************************************** SELECTORS ************************************************
 const input_output = document.querySelector('#in_out_txt');
+const currentNum = document.querySelector('#current_txt');
+
+
+
 const allNumberBtns = document.querySelectorAll('.num-btn');
 const clearAllBtn = document.querySelector('.clear-all');
 const clearEntryBtn = document.querySelector('.clear-entry');
-const currentNum = document.querySelector('#current_txt');
 
 const divideBtn = document.querySelector('.divide-btn');
 const multiplyBtn = document.querySelector('.multiply-btn');
@@ -15,78 +18,146 @@ const equalsBtn = document.querySelector('.equals-btn');
 //*********************** LOGIC *****************************
 
 //default array (onload) 0
-let storeCurrentNum = [0];
-let temp = [0];
+let displayFirstNum = [0];
+let displaySecondNum = [0];
+let tempArr = [0];
+
+let a = null;
+let b = null;
+
+let addBtnClicked = false;
+let subtractBtnClicked = false;
+let multiplyBtnClicked = false;
+let divideBtnClicked = false;
 
 //windows on load show default array 
 window.onload = (e) => {
-    // console.log(e);
-    input_output.textContent = storeCurrentNum.join('');
-    currentNum.textContent = temp.join('');
+    input_output.textContent = displayFirstNum.join('');
+    currentNum.textContent = tempArr.join('');
+    storeFirstNum();
+}
+
+
+const storeFirstNum = (e) => {
+    allNumberBtns.forEach(btn =>  {
+        btn.addEventListener("click", (e) => {
+            if (e.target.value == 0) {
+                return;
+            }
+            displayFirstNum.push(e.target.value); 
+            if (displayFirstNum[0] == 0 ) {
+                displayFirstNum.shift();
+            }
+            
+            // console.log(displayFirstNum);
+            input_output.textContent = displayFirstNum.join('');
+        })
+    })
+    console.log(displayFirstNum);
+    return displayFirstNum;
+}
+
+const storeSecondNum =  (e) => {
+    allNumberBtns.forEach(btn =>  {
+        btn.addEventListener("click", (e) => {
+            if (e.target.value == 0) {
+                return;
+            }
+            displaySecondNum.push(e.target.value); 
+            if (displaySecondNum[0] == 0 ) {
+                displaySecondNum.shift();
+            }
+            
+            // console.log(displaySecondNum);
+            input_output.textContent = displaySecondNum.join('');
+        })
+    })
+    console.log(displaySecondNum);
+    return displaySecondNum;
+
+}
+
+// const getNums = (cb) => {
+//     console.log(a);
+//     // b = storeSecondNum();
+//     operation(a, b);
+// }
+
+//could do if array.length == 1 and e.target.value == 0 then dont allow zero to be added, othersise fine 
+// allNumberBtns.forEach(btn =>  {
+//     btn.addEventListener("click", storeFirstNum);
+// });
+
+function displayDivide () {
+    divideBtnClicked = true;
+    // let tempArr = storeNextNum.concat(displayFirstNum.join(''));
+    currentNum.textContent = displayFirstNum.join('') + ' / ';
+    displayFirstNum = [0];
+    currentNum.classList.toggle('vis-hidden');
+    input_output.textContent = displayFirstNum;
+    storeSecondNum();
+}
+
+const divide = (a, b) => {
+    console.log(a, b);
+}
+
+// function multiply (a, b) {
+//     multiplyBtnClicked = true;
+//     let tempArr = storeNextNum.concat(displayFirstNum.join(''));
+//     currentNum.textContent = tempArr  + ' * ';
+//     displayFirstNum = [0];
+//     currentNum.classList.toggle('vis-hidden');
+//     input_output.textContent = displayFirstNum;
+//     // return nextInput
+// }
+// function subtract (a, b) {
+//     subtractBtnClicked = true;
+//     let tempArr = storeNextNum.concat(displayFirstNum.join(''));
+//     currentNum.textContent = tempArr  + ' - ';
+//     displayFirstNum = [0];
+//     currentNum.classList.toggle('vis-hidden');
+//     input_output.textContent = displayFirstNum;
+//     // return nextInput
+// }
+// function add (a, b) {
+//     addBtnClicked = true;
+//     let tempArr = storeNextNum.concat(displayFirstNum.join(''));
+//     currentNum.textContent = tempArr  + ' + ';
+//     displayFirstNum = [0];
+//     currentNum.classList.toggle('vis-hidden');
+//     input_output.textContent = displayFirstNum;
+//     // return nextInput
+// }
+
+
+function operation (a, b) {
+    if (divideBtnClicked) {
+        divide(displayFirstNum. displaySecondNum);
+    }
+    
 }
 
 //clear currentNum array and return to default [0]
 const clearAll = () => {
-    // if (temp == []) {
+    // if (tempArr == []) {
         
     // }
 
-    storeCurrentNum = [0];
-    temp = [];
-    input_output.textContent = storeCurrentNum;
+    displayFirstNum = [0];
+    displaySecondNum = [0];
+    tempArr = [];
+    input_output.textContent = displayFirstNum;
     currentNum.classList.toggle('vis-hidden');
-}
-
-//push each number clicked on calculator to storeCurrentNum array and show on calculator screen
-function storeNum (e) {
-    if (e.target.value == 0) {
-        return;
-    }
-    storeCurrentNum.push(e.target.value); 
-    if (storeCurrentNum[0] == 0 ) {
-        storeCurrentNum.shift();
-    }
-    input_output.textContent = storeCurrentNum.join('');
-    console.log(storeCurrentNum);
-}
-
-//could do if array.length == 1 and e.target.value == 0 then dont allow zero to be added, othersise fine 
-
-allNumberBtns.forEach(btn =>  {
-    btn.addEventListener("click", storeNum);
-});
-
-let storeNextNum = [];
-
-function divide (e) {
-    // everytime an operator is pressed...input_out val needs to be pushed to top (current) AND stored 
-    let temp = storeNextNum.concat(storeCurrentNum.join(''));
-    currentNum.textContent = temp  + ' / ';
-    storeCurrentNum = [0];
-    currentNum.classList.toggle('vis-hidden');
-    input_output.textContent = storeCurrentNum;
-
-    //clear input_outout, move to currentNum, and move onto nextInput function 
-    // return nextInput
-}
-
-//takes next input and pushes to temp array, if equals operate on arrays, if new operator, call function again to add next input to temp
-function nextInput (e) {
-    
-}
-
-
-function operation () {
-
 }
 
 
 // ******************************EVENT LISTENERS ******************************************
 
-divideBtn.addEventListener('click', divide);
-// multiplyBtn.addEventListener('click', divide);
-// subtractBtn.addEventListener('click', divide);
-// additionBtn.addEventListener('click', divide);
+divideBtn.addEventListener('click', displayDivide);
+// multiplyBtn.addEventListener('click', multiply);
+// subtractBtn.addEventListener('click', subtract);
+// additionBtn.addEventListener('click', add);
 
 //EQUALS BUTTONS
 equalsBtn.addEventListener('click', operation);
