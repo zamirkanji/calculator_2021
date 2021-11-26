@@ -20,20 +20,21 @@ let temp = [0];
 
 //windows on load show default array 
 window.onload = (e) => {
+    // console.log(e);
     input_output.textContent = storeCurrentNum.join('');
     currentNum.textContent = temp.join('');
 }
 
 //clear currentNum array and return to default [0]
 const clearAll = () => {
-    if (temp == []) {
+    // if (temp == []) {
         
-    }
+    // }
 
     storeCurrentNum = [0];
+    temp = [];
     input_output.textContent = storeCurrentNum;
     currentNum.classList.toggle('vis-hidden');
-    temp = [];
 }
 
 //push each number clicked on calculator to storeCurrentNum array and show on calculator screen
@@ -42,11 +43,11 @@ function storeNum (e) {
         return;
     }
     storeCurrentNum.push(e.target.value); 
-    //implicit type coercion 
     if (storeCurrentNum[0] == 0 ) {
         storeCurrentNum.shift();
     }
-    return input_output.textContent = storeCurrentNum.join('');
+    input_output.textContent = storeCurrentNum.join('');
+    console.log(storeCurrentNum);
 }
 
 //could do if array.length == 1 and e.target.value == 0 then dont allow zero to be added, othersise fine 
@@ -59,19 +60,24 @@ let storeNextNum = [];
 
 function divide (e) {
     // everytime an operator is pressed...input_out val needs to be pushed to top (current) AND stored 
-    // console.log(e);
     let temp = storeNextNum.concat(storeCurrentNum.join(''));
     currentNum.textContent = temp  + ' / ';
     storeCurrentNum = [0];
     currentNum.classList.toggle('vis-hidden');
-    // currentNum.classList.add('vis-show');
     input_output.textContent = storeCurrentNum;
 
-    return temp;
+    //clear input_outout, move to currentNum, and move onto nextInput function 
+    // return nextInput
+}
+
+//takes next input and pushes to temp array, if equals operate on arrays, if new operator, call function again to add next input to temp
+function nextInput (e) {
+    
 }
 
 
 function operation () {
+
 }
 
 
