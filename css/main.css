@@ -29,6 +29,10 @@ html, body {
     visibility: visible;
 }
 
+.vis-hidden {
+    visibility: hidden;
+}
+
 /* ********************************* CALCULATOR CONTAINER ********************************* */
 
 .calc-container {
