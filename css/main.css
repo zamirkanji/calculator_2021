@@ -69,19 +69,19 @@ p {
     text-align: center;
     color: var(--main-bg-color);
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
-    -webkit-duration: 0.1s; /* Safari */
+    /* -webkit-duration: 0.1s; */
     text-decoration: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     cursor: pointer;
-    transition: all .1s ease-in;
+    /* transition: all .1s ease-in; */
 }
-.btn:hover {background-color: rgba(255, 255, 255, 0.9)};
+/* .btn:hover {background-color: rgba(255, 255, 255, 0.9)};
 
 .btn:active {
   background-color: var(--light-green);
   box-shadow: 0 2px var(--main-bg-color);
   transform: translateY(4px);
-}
+} */
   
 .btn:active:after {
     padding: 0;
