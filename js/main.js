@@ -22,7 +22,11 @@ const equalsBtn = document.querySelector('.equals-btn');
 let displayInput = 0;
 let displayCurrent = 0;
 let numArr = [];
-let storeTwoNums = [];
+
+let divideOperator = ' / ';
+
+let a;
+let b;
 
 let addBtnClicked = false;
 let subtractBtnClicked = false;
@@ -33,111 +37,85 @@ let divideBtnClicked = false;
 window.onload = (e) => {
     input_output.textContent = displayInput;
     currentNum.textContent = displayCurrent;
-   
-    displayNum();
 }
 
-const displayNum = () => {
-    let stringNums = '';
-    allNumberBtns.forEach(btn =>  {
-        
-        btn.addEventListener("click", (e) => {
-            console.log(e.target.value);
-            console.log(typeof e.target.value);
-        // if (e.target.value == 0) {
-        //     return;
-        // }
-        // numArr.push(e.target.value); 
-        // if (numArr[0] == 0 ) {
-            //     numArr.shift();
-            // }
-            // input_output.textContent = numArr.join('');
-            let val = e.target.value;
-            
-            input_output.textContent = val;
-            input_output.textContent = stringNums +=  val;
-            
-        })
+let stringNums = '';
+
+allNumberBtns.forEach(btn =>  {
+    btn.addEventListener("click", (e) => {
+        let val = e.target.value;
+        input_output.textContent = val;
+        input_output.textContent = stringNums +=  val;       
     })
-    // input_output.textContent = stringNums;
-    return +stringNums;
-}
+})
 
-
-
-function displayDivide () {
-    divideBtnClicked = true;
-    storeTwoNums.push(numArr);
-    console.log(storeTwoNums);
-    currentNum.textContent = numArr.join('') + ' / ';
+function storeOperator_Num (number, operator) {
     currentNum.classList.toggle('vis-hidden');
-    numArr = [];
+    numArr.push(number);
+    currentNum.textContent = number + operator;
+    stringNums = '';
     input_output.textContent = displayCurrent;
 }
 
-const divide = (a, b) => {
+const divideNums = (a, b) => {
     console.log(a, b);
+    return a / b; 
 }
-
-// function multiply (a, b) {
-//     multiplyBtnClicked = true;
-//     let tempArr = storeNextNum.concat(numArr.join(''));
-//     currentNum.textContent = tempArr  + ' * ';
-//     numArr = [0];
-//     currentNum.classList.toggle('vis-hidden');
-//     input_output.textContent = numArr;
-//     // return nextInput
+// const multiplyNums = (a, b) => {
+//     return a * b; 
 // }
-// function subtract (a, b) {
-//     subtractBtnClicked = true;
-//     let tempArr = storeNextNum.concat(numArr.join(''));
-//     currentNum.textContent = tempArr  + ' - ';
-//     numArr = [0];
-//     currentNum.classList.toggle('vis-hidden');
-//     input_output.textContent = numArr;
-//     // return nextInput
+// const subtractNums = (a, b) => {
+//     return a - b; 
 // }
-// function add (a, b) {
-//     addBtnClicked = true;
-//     let tempArr = storeNextNum.concat(numArr.join(''));
-//     currentNum.textContent = tempArr  + ' + ';
-//     numArr = [0];
-//     currentNum.classList.toggle('vis-hidden');
-//     input_output.textContent = numArr;
-//     // return nextInput
+// const addNums = (a, b) => {
+//     return a + b; 
 // }
 
 
 function operation (a, b) {
-    if (divideBtnClicked) {
-        divide(numArr. storeTwoNums);
+    if (divideBtnClicked == true) {
+        divideNums(a, b);
     }
     
 }
 
-//clear currentNum array and return to default [0]
+// ************************* CLEAR ALL, CLEAR ENTRY **************************************
+
 const clearAll = () => {
-    numArr = [0];
-    storeTwoNums = [0];
     tempArr = [];
-    input_output.textContent = numArr;
-    currentNum.classList.toggle('vis-hidden');
+    input_output.textContent = displayCurrent;
+    currentNum.classList.add('vis-hidden');
 }
 
 
 // ******************************EVENT LISTENERS ******************************************
 
+// a = displayNum();
+
+divideBtn.addEventListener('click', (e) => {
+    divideBtnClicked = true;
+    storeOperator_Num(stringNums, divideOperator);
+});
 
 
+// multiplyBtn.addEventListener('click', (e) => {
+//     multiplyBtnClicked = true;
+//     storeOperator_Num();
+// });
+// subtractBtn.addEventListener('click', (e) => {
+//     subtractBtnClicked = true;
+//     storeOperator_Num();
+// });
+// additionBtn.addEventListener('click', (e) => {
+//     addBtnClicked = true;
+//     storeOperator_Num();
+// });
 
-divideBtn.addEventListener('click', displayDivide);
-// multiplyBtn.addEventListener('click', multiply);
-// subtractBtn.addEventListener('click', subtract);
-// additionBtn.addEventListener('click', add);
 
 //EQUALS BUTTONS
 equalsBtn.addEventListener('click', () => {
-    operation(numArr, storeTwoNums);
+    // storeOperator_Num(numArr, stringNums)
+    operation(numArr, stringNums);
 });
 
 
