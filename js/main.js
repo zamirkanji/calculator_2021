@@ -18,8 +18,11 @@ const equalsBtn = document.querySelector('.equals-btn');
 //*********************** LOGIC *****************************
 
 //default array (onload) 0
-let displayFirstNum = [0];
-let displaySecondNum = [0];
+
+let displayInput = 0;
+let displayCurrent = 0;
+let displayFirstNum = [];
+let displaySecondNum = [];
 let tempArr = [0];
 
 let a = null;
@@ -32,48 +35,57 @@ let divideBtnClicked = false;
 
 //windows on load show default array 
 window.onload = (e) => {
-    input_output.textContent = displayFirstNum.join('');
-    currentNum.textContent = tempArr.join('');
-    storeFirstNum();
+    input_output.textContent = displayInput;
+    currentNum.textContent = displayCurrent;
+    buttonEventFirstNum();
 }
 
+const buttonEventFirstNum = () => {
+allNumberBtns.forEach(btn =>  {
+    btn.addEventListener("click", (e) => {
+        storeFirstNum(e);
+        
+    });
+});
+}
+const buttonEventSecondNum = () => {
+allNumberBtns.forEach(btn =>  {
+    btn.addEventListener("click", (e) => {
+        storeSecondNum(e);
+        
+    });
+});
+}
 
 const storeFirstNum = (e) => {
-    allNumberBtns.forEach(btn =>  {
-        btn.addEventListener("click", (e) => {
-            if (e.target.value == 0) {
-                return;
-            }
-            displayFirstNum.push(e.target.value); 
-            if (displayFirstNum[0] == 0 ) {
-                displayFirstNum.shift();
-            }
-            
-            // console.log(displayFirstNum);
-            input_output.textContent = displayFirstNum.join('');
-        })
-    })
+    if (e.target.value == 0) {
+        return;
+    }
+    displayFirstNum.push(e.target.value); 
+    if (displayFirstNum[0] == 0 ) {
+        displayFirstNum.shift();
+    }
+        
+    // console.log(displayFirstNum);
+    input_output.textContent = displayFirstNum.join('');
     console.log(displayFirstNum);
-    return displayFirstNum;
+    a = displayFirstNum;
+    return a;
 }
+    
 
 const storeSecondNum =  (e) => {
-    allNumberBtns.forEach(btn =>  {
-        btn.addEventListener("click", (e) => {
-            if (e.target.value == 0) {
-                return;
-            }
-            displaySecondNum.push(e.target.value); 
-            if (displaySecondNum[0] == 0 ) {
-                displaySecondNum.shift();
-            }
-            
-            // console.log(displaySecondNum);
-            input_output.textContent = displaySecondNum.join('');
-        })
-    })
+    if (e.target.value == 0) {
+        return;
+    }
+    displaySecondNum.push(e.target.value); 
+    if (displaySecondNum[0] == 0 ) {
+            displaySecondNum.shift();
+    }
+    input_output.textContent = displaySecondNum.join('');
     console.log(displaySecondNum);
-    return displaySecondNum;
+    b = displaySecondNum;
+    return b;
 
 }
 
@@ -83,19 +95,14 @@ const storeSecondNum =  (e) => {
 //     operation(a, b);
 // }
 
-//could do if array.length == 1 and e.target.value == 0 then dont allow zero to be added, othersise fine 
-// allNumberBtns.forEach(btn =>  {
-//     btn.addEventListener("click", storeFirstNum);
-// });
+
 
 function displayDivide () {
     divideBtnClicked = true;
-    // let tempArr = storeNextNum.concat(displayFirstNum.join(''));
     currentNum.textContent = displayFirstNum.join('') + ' / ';
-    displayFirstNum = [0];
     currentNum.classList.toggle('vis-hidden');
-    input_output.textContent = displayFirstNum;
-    storeSecondNum();
+    input_output.textContent = displayCurrent;
+    buttonEventSecondNum();
 }
 
 const divide = (a, b) => {
@@ -140,10 +147,6 @@ function operation (a, b) {
 
 //clear currentNum array and return to default [0]
 const clearAll = () => {
-    // if (tempArr == []) {
-        
-    // }
-
     displayFirstNum = [0];
     displaySecondNum = [0];
     tempArr = [];
@@ -160,7 +163,9 @@ divideBtn.addEventListener('click', displayDivide);
 // additionBtn.addEventListener('click', add);
 
 //EQUALS BUTTONS
-equalsBtn.addEventListener('click', operation);
+equalsBtn.addEventListener('click', () => {
+    operation(displayFirstNum, displaySecondNum);
+});
 
 
 //CLEAR ALL BUTTON 
