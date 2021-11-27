@@ -1,7 +1,8 @@
 // console.log("Test");
 //**************************************** SELECTORS ************************************************
 const input_output = document.querySelector('#in_out_txt');
-const currentNum = document.querySelector('#current_txt');
+const currentNum = document.querySelector('.current_txt');
+const currentNumContainer = document.querySelector('.current_num_container');
 
 
 
@@ -50,8 +51,9 @@ allNumberBtns.forEach(btn =>  {
 })
 
 function storeOperator_Num (number, operator) {
-    currentNum.classList.toggle('vis-hidden');
-    numArr.push(number);
+    // currentNum.classList.toggle('vis-hidden');
+    // currentNumContainer.classList.remove('vis-hidden');
+    // numArr.push(number);
     currentNum.textContent = number + operator;
     stringNums = '';
     input_output.textContent = displayCurrent;
@@ -59,6 +61,7 @@ function storeOperator_Num (number, operator) {
 
 const divideNums = (a, b) => {
     console.log(a, b);
+
     return a / b; 
 }
 // const multiplyNums = (a, b) => {
@@ -73,6 +76,7 @@ const divideNums = (a, b) => {
 
 
 function operation (a, b) {
+    // numArr.push(stringNums);
     if (divideBtnClicked == true) {
         divideNums(a, b);
     }
@@ -81,19 +85,19 @@ function operation (a, b) {
 
 // ************************* CLEAR ALL, CLEAR ENTRY **************************************
 
-const clearAll = () => {
-    tempArr = [];
-    input_output.textContent = displayCurrent;
-    currentNum.classList.add('vis-hidden');
-}
+// const clearAll = () => {
+//     tempArr = [];
+//     input_output.textContent = displayCurrent;
+//     currentNum.classList.toggle('vis-hidden');
+// }
 
 
 // ******************************EVENT LISTENERS ******************************************
 
-// a = displayNum();
-
 divideBtn.addEventListener('click', (e) => {
     divideBtnClicked = true;
+    numArr.push(stringNums);
+    console.log(numArr);
     storeOperator_Num(stringNums, divideOperator);
 });
 
@@ -115,11 +119,16 @@ divideBtn.addEventListener('click', (e) => {
 //EQUALS BUTTONS
 equalsBtn.addEventListener('click', () => {
     // storeOperator_Num(numArr, stringNums)
-    operation(numArr, stringNums);
+
+    // a = numArr[0];
+    // b = numArr[1];
+    // operation(a, b);
+    numArr.push(stringNums);
+    operation(numArr[0], numArr[1]);
 });
 
 
 //CLEAR ALL BUTTON 
-clearAllBtn.addEventListener('click', clearAll);
+// clearAllBtn.addEventListener('click', clearAll);
 
 //CLEAR ENTRY (get last version num pushed to calculator (from storeNum()) and clear it 
