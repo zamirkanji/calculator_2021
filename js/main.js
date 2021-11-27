@@ -24,7 +24,10 @@ let displayInput = 0;
 let displayCurrent = 0;
 let numArr = [];
 
-let divideOperator = ' / ';
+const divideOperator = ' / ';
+const multiplyOperator = ' * ';
+const subtractOperator = ' - ';
+const additionOperator = ' + ';
 
 let a;
 let b;
@@ -61,24 +64,38 @@ function storeOperator_Num (number, operator) {
 
 const divideNums = (a, b) => {
     console.log(a, b);
-
+    let answer = a / b;
+    input_output.textContent = answer;
     return a / b; 
 }
-// const multiplyNums = (a, b) => {
-//     return a * b; 
-// }
-// const subtractNums = (a, b) => {
-//     return a - b; 
-// }
-// const addNums = (a, b) => {
-//     return a + b; 
-// }
+const multiplyNums = (a, b) => {
+    console.log(a, b);
+    let answer = a * b;
+    input_output.textContent = answer;
+    return a * b; 
+}
+const subtractNums = (a, b) => {
+    console.log(a, b);
+    let answer = a - b;
+    input_output.textContent = answer;
+    return a - b; 
+}
+const addNums = (a, b) => {
+    console.log(a, b);
+    let answer = a + b;
+    input_output.textContent = answer;
+    return a + b; 
+}
 
 
 function operation (a, b) {
     // numArr.push(stringNums);
     if (divideBtnClicked == true) {
         divideNums(a, b);
+    } else if (multiplyBtnClicked == true) {
+        multiplyNums(a, b);
+    } else if (subtractBtnClicked == true) {
+        subtractNums(a, b);
     }
     
 }
@@ -100,29 +117,27 @@ divideBtn.addEventListener('click', (e) => {
     console.log(numArr);
     storeOperator_Num(stringNums, divideOperator);
 });
-
-
-// multiplyBtn.addEventListener('click', (e) => {
-//     multiplyBtnClicked = true;
-//     storeOperator_Num();
-// });
-// subtractBtn.addEventListener('click', (e) => {
-//     subtractBtnClicked = true;
-//     storeOperator_Num();
-// });
-// additionBtn.addEventListener('click', (e) => {
-//     addBtnClicked = true;
-//     storeOperator_Num();
-// });
+multiplyBtn.addEventListener('click', (e) => {
+    multiplyBtnClicked = true;
+    numArr.push(stringNums);
+    storeOperator_Num(stringNums, multiplyOperator);
+});
+subtractBtn.addEventListener('click', (e) => {
+    subtractBtnClicked = true;
+    numArr.push(stringNums);
+    storeOperator_Num(stringNums, subtractOperator);
+});
+additionBtn.addEventListener('click', (e) => {
+    addBtnClicked = true;
+    numArr.push(stringNums);
+    storeOperator_Num(stringNums, additionOperator);
+});
 
 
 //EQUALS BUTTONS
 equalsBtn.addEventListener('click', () => {
-    // storeOperator_Num(numArr, stringNums)
+    // storeOperator_Num(numArr, stringNums);
 
-    // a = numArr[0];
-    // b = numArr[1];
-    // operation(a, b);
     numArr.push(stringNums);
     operation(numArr[0], numArr[1]);
 });
