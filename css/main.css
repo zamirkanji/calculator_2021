@@ -1,62 +1,52 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    touch-action: manipulation;
-    
+    /* touch-action: manipulation; */
+    font-weight: var(--font-weight);
 }
 
 :root {
     --main-bg-color: rgb(72, 117, 114);
     --light-green: rgb(155, 206, 202);
-    --font-weight: 600;
+    --font-weight: 700;
     --ind-red: rgba(255, 51, 51, 0.7);
 }
 html, body {
     padding: 0;
     min-height: 100%;
     width: 100%;
-    /* background-color: black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: var(--font-weight);
 }
 
-.vis-show {
+/* .vis-show {
     visibility: visible;
 }
 
 .vis-hidden {
     visibility: hidden;
-}
+} */
 
 /* ********************************* CALCULATOR CONTAINER ********************************* */
 
 .calc-container {
     margin: 0;
-    padding: 7px;
+    padding: 14px;
     min-height: 664px;
     max-width: 50%;
     min-width: 390px;
-    /* background-color: var(--light-green); */
     background-color: black;
-    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
-    border: 7px solid black;
-
-    
+    /* border: 4px solid black; */
+    gap: 7px;
 }
 /* ********************************* ALL BTNS ********************************* */
-
-p {
-    font-size: 3em;
-    font-weight: lighter;
-    color: var(--main-bg-color);
-}
 
 .btn {
     margin: 0;
@@ -65,17 +55,12 @@ p {
     height: 100%;
     border-radius: 10px;
     font-size: 2em;
-    font-weight: lighter;
     text-align: center;
     color: var(--main-bg-color);
-    /* box-shadow: 2px 2px 3px 0 rgb(255, 255, 255, .4); */
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     border: 2px solid white;
-    /* -webkit-duration: 0.1s; */
     text-decoration: none;
-    /* overflow: hidden; */
-    cursor: pointer;
-    /* transition: all .1s ease-in; */
+    background-color: white;
 }
 /* .btn:hover {background-color: rgba(255, 255, 255, 0.9)};
 
@@ -94,33 +79,31 @@ p {
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
-    flex: 1;
+    flex: .5;
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 4px solid black;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 15px;
-    color: white;
-    font-weight: lighter;
-    /* display: block; */
+    /* border-radius: 10px; */
+    /* padding-right: 7px; */
 }
 .current_num_container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    /* margin-right: 10px; */
-    border: 2px solid blue;
-
+    border: 1px solid var(--main-bg-color);
+    /* border-radius: 10px; */
+    padding-right: 7px;
 }
 .input_output_container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    /* margin-right: 10px; */
-    border: 2px solid black;
+    border: 1px solid var(--main-bg-color);
+    /* border-radius: 10px; */
+    padding-right: 7px;
 }
 
 .current_txt {
@@ -128,13 +111,17 @@ p {
     margin: 0;
     padding: 0;
     display: flex;
-    /* flex: 1; */
     justify-content: flex-end;
     color: var(--light-green);
-    font-size: 2.5em;
-    border: 2px solid black;
+    /* font-size: 2.5em; */
 }
 
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+    color: var(--main-bg-color);
+}
 
 /* ********************************* CLEAR CONTAINER ********************************* */
 .clear-container {
@@ -152,13 +139,10 @@ p {
 }
 .clear-all, .clear-entry {
     border: 2px solid var(--light-green);
-    background-color: black;
     background-color: var(--light-green);
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 15px;
-    /* font: white; */
+    border-radius: 10px;
     color: var(--main-bg-color);
-    font-weight: lighter;
 }
 
 .clear-all:hover, .clear-entry:hover {background-color: white}
@@ -182,7 +166,7 @@ p {
 }
 
 .right-side-container {
-    flex: .7;
+    flex: .63;
     margin: 0;
     padding: 0;
     display: flex;
@@ -200,39 +184,27 @@ p {
     gap: 7px;
 }
 
-.one_to_nine_container > button {
-    border-radius: 40px;
-}
-
 .row_1 {
     flex: 1;
     display: flex;
-    /* justify-content: space-around; */
-    /* align-items: stretch; */
     gap: 7px;
 }
 
 .row_2 {
     flex: 1;
     display: flex;
-    /* justify-content: space-evenly; */
-    /* align-items: stretch; */
     gap: 7px;
 }
 
 .row_3 {
     flex: 1;
     display: flex;
-    /* justify-content: space-evenly; */
-    /* align-items: stretch; */
     gap: 7px;
 }
 
 .row_4 {
     flex: 1;
     display: flex;
-    /* justify-content: space-evenly;
-    align-items: stretch; */
     gap: 7px;
 }
 
@@ -241,37 +213,28 @@ p {
 }
 .btn_two_container {
     flex: 1 1 0px;
-    
 }
 .btn_three_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
 .btn_four_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
 .btn_five_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px; 
 }
 .btn_six_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
 .btn_seven_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
 .btn_eight_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
 .btn_nine_container {
-    flex: 1 1 0px;
-    
+    flex: 1 1 0px;  
 }
-
 
 
 .btn-zero-container {
@@ -316,13 +279,10 @@ p {
 }
 .equals-btn {
     border: 2px solid var(--light-green);
-    background-color: black;
     background-color: var(--light-green);
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 15px;
-    /* font: white; */
+    border-radius: 10px;
     color: var(--main-bg-color);
-    font-weight: lighter;
 }
 
 .operator {
@@ -330,7 +290,7 @@ p {
     border: 2px solid var(--main-bg-color);
     color: white;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 

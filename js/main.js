@@ -1,6 +1,6 @@
 // console.log("Test");
 //**************************************** SELECTORS ************************************************
-const input_output = document.querySelector('#in_out_txt');
+const input_output = document.querySelector('.in_out_txt');
 const currentNum = document.querySelector('.current_txt');
 const currentNumContainer = document.querySelector('.current_num_container');
 
@@ -17,8 +17,6 @@ const additionBtn = document.querySelector('.addition-btn');
 const equalsBtn = document.querySelector('.equals-btn');
 
 //*********************** LOGIC *****************************
-
-//default array (onload) 0
 
 let displayInput = 0;
 let displayCurrent = 0;
