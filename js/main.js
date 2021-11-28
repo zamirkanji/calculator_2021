@@ -63,24 +63,28 @@ function storeOperator_Num (number, operator) {
 const divideNums = (a, b) => {
     console.log(a, b);
     let answer = a / b;
+    currentNum.textContent = `${a}${divideOperator}${b} = ${answer}`;
     input_output.textContent = answer;
     return a / b; 
 }
 const multiplyNums = (a, b) => {
     console.log(a, b);
     let answer = a * b;
+    currentNum.textContent = `${a}${multiplyOperator}${b} = ${answer}`;
     input_output.textContent = answer;
     return a * b; 
 }
 const subtractNums = (a, b) => {
     console.log(a, b);
     let answer = a - b;
+    currentNum.textContent = `${a}${subtractOperator}${b} = ${answer}`;
     input_output.textContent = answer;
     return a - b; 
 }
 const addNums = (a, b) => {
     console.log(a, b);
     let answer = +a + +b;
+    currentNum.textContent = `${+a}${String(additionOperator)}${+b} = ${answer}`;
     input_output.textContent = answer;
     return a + b; 
 }
@@ -141,6 +145,7 @@ equalsBtn.addEventListener('click', () => {
     // storeOperator_Num(numArr, stringNums);
 
     numArr.push(stringNums);
+    
     operation(numArr[0], numArr[1]);
 });
 

@@ -81,7 +81,7 @@ html, body {
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
-    flex: .5;
+    flex: 1;
     display: flex;
     flex-direction: column;
     background-color: white;
