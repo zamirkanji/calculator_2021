@@ -40,10 +40,10 @@ let divideBtnClicked = false;
 
 //*******************************CHECK IF MOBILE*******************************
 
-let mobile = NavigatorUAData.mobile;
+let mobile = navigator.userAgent;
 const isIOS = () => {
     return (
-        navigator.userAgentData.mobile
+        /iPad|iPhone|iPod/.test(mobile)
     );
 }
 let isMobile = isIOS();
