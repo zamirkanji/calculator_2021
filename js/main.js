@@ -80,7 +80,7 @@ const subtractNums = (a, b) => {
 }
 const addNums = (a, b) => {
     console.log(a, b);
-    let answer = a + b;
+    let answer = +a + +b;
     input_output.textContent = answer;
     return a + b; 
 }
@@ -94,6 +94,10 @@ function operation (a, b) {
         multiplyNums(a, b);
     } else if (subtractBtnClicked == true) {
         subtractNums(a, b);
+    } else if (addBtnClicked == true) {
+        addNums(a, b);
+    } else {
+        return;
     }
     
 }
