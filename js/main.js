@@ -40,15 +40,33 @@ window.onload = (e) => {
     input_output.textContent = displayInput;
     currentNum.textContent = displayCurrent;
 }
+let mobile = NavigatorUAData.mobile;
+
+const isIOS = () => {
+    return (
+        navigator.userAgentData.mobile
+    );
+}
+
+let isMobile = isIOS();
+// console.log(isMobile);
 
 let stringNums = '';
 
 allNumberBtns.forEach(btn =>  {
-    btn.addEventListener("click", (e) => {
-        let val = e.target.value;
-        input_output.textContent = val;
-        input_output.textContent = stringNums +=  val;       
-    })
+    if (isMobile) {
+        btn.addEventListener('touchstart', (e) => {
+            let val = e.target.value;
+            input_output.textContent = val;
+            input_output.textContent = stringNums +=  val;       
+        })
+    } else {
+        btn.addEventListener('click', (e) => {
+            let val = e.target.value;
+            input_output.textContent = val;
+            input_output.textContent = stringNums +=  val;       
+        })
+    }
 })
 
 function storeOperator_Num (number, operator) {
@@ -116,38 +134,78 @@ function operation (a, b) {
 
 
 // ******************************EVENT LISTENERS ******************************************
-
-divideBtn.addEventListener('click', (e) => {
-    divideBtnClicked = true;
-    numArr.push(stringNums);
-    console.log(numArr);
-    storeOperator_Num(stringNums, divideOperator);
-});
-multiplyBtn.addEventListener('click', (e) => {
-    multiplyBtnClicked = true;
-    numArr.push(stringNums);
-    storeOperator_Num(stringNums, multiplyOperator);
-});
-subtractBtn.addEventListener('click', (e) => {
-    subtractBtnClicked = true;
-    numArr.push(stringNums);
-    storeOperator_Num(stringNums, subtractOperator);
-});
-additionBtn.addEventListener('click', (e) => {
-    addBtnClicked = true;
-    numArr.push(stringNums);
-    storeOperator_Num(stringNums, additionOperator);
-});
-
+if (isMobile) {
+    divideBtn.addEventListener('touchstart', (e) => {
+        divideBtnClicked = true;
+        numArr.push(stringNums);
+        console.log(numArr);
+        storeOperator_Num(stringNums, divideOperator);
+    });
+    multiplyBtn.addEventListener('touchstart', (e) => {
+        multiplyBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, multiplyOperator);
+    });
+    subtractBtn.addEventListener('touchstart', (e) => {
+        subtractBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, subtractOperator);
+    });
+    additionBtn.addEventListener('touchstart', (e) => {
+        addBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, additionOperator);
+    });
+} else {
+    divideBtn.addEventListener('click', (e) => {
+        divideBtnClicked = true;
+        numArr.push(stringNums);
+        console.log(numArr);
+        storeOperator_Num(stringNums, divideOperator);
+    });
+    multiplyBtn.addEventListener('click', (e) => {
+        multiplyBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, multiplyOperator);
+    });
+    subtractBtn.addEventListener('click', (e) => {
+        subtractBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, subtractOperator);
+    });
+    additionBtn.addEventListener('click', (e) => {
+        addBtnClicked = true;
+        numArr.push(stringNums);
+        storeOperator_Num(stringNums, additionOperator);
+    });
+}
 
 //EQUALS BUTTONS
-equalsBtn.addEventListener('click', () => {
-    // storeOperator_Num(numArr, stringNums);
-
-    numArr.push(stringNums);
+if (isMobile) {
+    equalsBtn.addEventListener('touchstart', () => {
+        // storeOperator_Num(numArr, stringNums);
     
-    operation(numArr[0], numArr[1]);
-});
+        numArr.push(stringNums);
+        
+        operation(numArr[0], numArr[1]);
+    });
+} else {
+    equalsBtn.addEventListener('click', () => {
+        // storeOperator_Num(numArr, stringNums);
+    
+        numArr.push(stringNums);
+        
+        operation(numArr[0], numArr[1]);
+    });
+}
+
+// equalsBtn.addEventListener('click', () => {
+//     // storeOperator_Num(numArr, stringNums);
+
+//     numArr.push(stringNums);
+    
+//     operation(numArr[0], numArr[1]);
+// });
 
 
 //CLEAR ALL BUTTON 
