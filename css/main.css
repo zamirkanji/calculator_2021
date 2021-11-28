@@ -61,7 +61,7 @@ html, body {
     color: var(--main-bg-color);
     box-shadow: 2px 2px 3px 0 rgb(0, 0, 0);
     /* border: 2px solid black */
-    border: none;
+    border: 1px inset var(--light-green);
     text-decoration: none;
     background-color: black;
 }
@@ -86,10 +86,13 @@ html, body {
     display: flex;
     flex-direction: column;
     background-color: white;
-    box-shadow: 2px 2px 3px 0 rgba(155, 206, 202, 0.6);
-    /* border: inset; */
-    /* border: 1px solid var(--main-bg-color); */
-    border-radius: 10px;
+    /* box-shadow: 2px 2px 3px 0 rgba(155, 206, 202, 0.6); */
+    border-radius: 5px;
+    /* box-shadow: 2px 2px 3px 0 rgb(0, 0, 0); */
+    /* border: 2px solid black */
+    border: none;
+    text-decoration: none;
+    background-color: white;
     /* padding-right: 7px; */
 }
 .current_num_container {
@@ -296,6 +299,7 @@ p {
     color: white;
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     border-radius: 10px;
+    /* border: 1px inset var(--light-green); */
 }
 
 
