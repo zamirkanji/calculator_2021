@@ -53,22 +53,25 @@ let isMobile = isIOS();
 
 let stringNums = '';
 
-allNumberBtns.forEach(btn =>  {
-    if (isMobile) {
+
+if (isMobile) {
+    allNumberBtns.forEach(btn =>  {
         btn.addEventListener('touchstart', (e) => {
             let val = e.target.value;
             input_output.textContent = val;
             input_output.textContent = stringNums +=  val;       
         })
-    } else {
+    })
+} else {
+    allNumberBtns.forEach(btn =>  {
         btn.addEventListener('click', (e) => {
             let val = e.target.value;
             input_output.textContent = val;
             input_output.textContent = stringNums +=  val;       
         })
-    }
-})
-
+    })
+}
+    
 function storeOperator_Num (number, operator) {
     // currentNum.classList.toggle('vis-hidden');
     // currentNumContainer.classList.remove('vis-hidden');
