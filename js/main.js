@@ -1,10 +1,7 @@
-// console.log("Test");
 //**************************************** SELECTORS ************************************************
 const input_output = document.querySelector('.in_out_txt');
 const currentNum = document.querySelector('.current_txt');
 const currentNumContainer = document.querySelector('.current_num_container');
-
-
 
 const allNumberBtns = document.querySelectorAll('.num-btn');
 const clearAllBtn = document.querySelector('.clear-all');
@@ -16,8 +13,7 @@ const subtractBtn = document.querySelector('.subtract-btn');
 const additionBtn = document.querySelector('.addition-btn');
 const equalsBtn = document.querySelector('.equals-btn');
 
-//*********************** LOGIC *****************************
-
+//********************************************** LOGIC **********************************************
 let displayInput = 0;
 let displayCurrent = 0;
 let numArr = [];
@@ -29,32 +25,34 @@ const additionOperator = ' + ';
 
 let a;
 let b;
+let stringNums = '';
 
 let addBtnClicked = false;
 let subtractBtnClicked = false;
 let multiplyBtnClicked = false;
 let divideBtnClicked = false;
 
-//windows on load show default array 
-window.onload = (e) => {
-    input_output.textContent = displayInput;
-    currentNum.textContent = displayCurrent;
-}
-let mobile = NavigatorUAData.mobile;
+//windows on load show default 0
+// window.onload = (e) => {
+//     input_output.textContent = displayInput;
+//     currentNum.textContent = displayCurrent;
+// }
 
+//*******************************CHECK IF MOBILE*******************************
+
+let mobile = NavigatorUAData.mobile;
 const isIOS = () => {
     return (
         navigator.userAgentData.mobile
     );
 }
-
 let isMobile = isIOS();
-// console.log(isMobile);
+console.log(isMobile);
 
-let stringNums = '';
-
+//************************************ LOGIC *************************************** */
 
 if (isMobile) {
+    console.log(isMobile);
     allNumberBtns.forEach(btn =>  {
         btn.addEventListener('touchstart', (e) => {
             let val = e.target.value;
@@ -129,11 +127,13 @@ function operation (a, b) {
 
 // ************************* CLEAR ALL, CLEAR ENTRY **************************************
 
-// const clearAll = () => {
-//     tempArr = [];
-//     input_output.textContent = displayCurrent;
-//     currentNum.classList.toggle('vis-hidden');
-// }
+const clearAll = () => {
+    // tempArr = [];
+    // input_output.textContent = displayCurrent;
+    // currentNum.classList.toggle('vis-hidden');
+    let clearAllConfirm = window.confirm('Are you sure you want to Clear Everything?');
+    if (clearAllConfirm) {location.reload()};
+}
 
 
 // ******************************EVENT LISTENERS ******************************************
@@ -163,7 +163,6 @@ if (isMobile) {
     divideBtn.addEventListener('click', (e) => {
         divideBtnClicked = true;
         numArr.push(stringNums);
-        console.log(numArr);
         storeOperator_Num(stringNums, divideOperator);
     });
     multiplyBtn.addEventListener('click', (e) => {
@@ -186,32 +185,23 @@ if (isMobile) {
 //EQUALS BUTTONS
 if (isMobile) {
     equalsBtn.addEventListener('touchstart', () => {
-        // storeOperator_Num(numArr, stringNums);
-    
         numArr.push(stringNums);
-        
         operation(numArr[0], numArr[1]);
     });
 } else {
     equalsBtn.addEventListener('click', () => {
         // storeOperator_Num(numArr, stringNums);
-    
         numArr.push(stringNums);
-        
         operation(numArr[0], numArr[1]);
     });
 }
 
-// equalsBtn.addEventListener('click', () => {
-//     // storeOperator_Num(numArr, stringNums);
-
-//     numArr.push(stringNums);
-    
-//     operation(numArr[0], numArr[1]);
-// });
-
 
 //CLEAR ALL BUTTON 
-// clearAllBtn.addEventListener('click', clearAll);
+if (isMobile) {
+    clearAllBtn.addEventListener('touchstart', clearAll);
+} else {
+    clearAllBtn.addEventListener('click', clearAll);
+}
 
 //CLEAR ENTRY (get last version num pushed to calculator (from storeNum()) and clear it 
