@@ -112,7 +112,8 @@ const addNums = (a, b) => {
 function operation (a, b) {
     // numArr.push(stringNums);
     if (divideBtnClicked == true) {
-        divideNums(a, b);
+        const divide_Answer = divideNums(a, b);
+        
     } else if (multiplyBtnClicked == true) {
         multiplyNums(a, b);
     } else if (subtractBtnClicked == true) {
@@ -143,6 +144,11 @@ if (isMobile) {
         numArr.push(stringNums);
         console.log(numArr);
         storeOperator_Num(stringNums, divideOperator);
+
+        //if answer exists, 
+        // numArr = [];
+        // numArr.push(divide_Answer);
+        // currentNum.textContent = numArr;
     });
     multiplyBtn.addEventListener('touchstart', (e) => {
         multiplyBtnClicked = true;

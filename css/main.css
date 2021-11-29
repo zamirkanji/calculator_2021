@@ -61,50 +61,31 @@ html, body {
     color: var(--main-bg-color);
     box-shadow: 2px 2px 3px 0 rgb(0, 0, 0);
     /* border: 2px solid black */
-    border: 1px inset var(--light-green);
+    border: 1px solid white;
     text-decoration: none;
-    background-color: black;
+    background-color: white;
 }
-/* .btn:hover {background-color: rgba(255, 255, 255, 0.9)};
-
-.btn:active {
-  background-color: var(--light-green);
-  box-shadow: 0 2px var(--main-bg-color);
-  transform: translateY(4px);
-} */
-  
-/* .btn:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s;
-} */
 
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
-    flex: 1;
+    flex: .75;
     display: flex;
     flex-direction: column;
     background-color: white;
-    /* box-shadow: 2px 2px 3px 0 rgba(155, 206, 202, 0.6); */
+    box-shadow: 2px 2px 3px 0 rgba(155, 206, 202, 0.6);
     border-radius: 5px;
-    /* box-shadow: 2px 2px 3px 0 rgb(0, 0, 0); */
-    /* border: 2px solid black */
     border: none;
     text-decoration: none;
     background-color: white;
-    /* padding-right: 7px; */
 }
-.current_num_container {
+/* .current_num_container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    /* border: 1px solid var(--main-bg-color); */
-    /* border-radius: 10px; */
     padding-right: 7px;
-}
-.input_output_container {
+} */
+.display-text-container {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -114,20 +95,18 @@ html, body {
     padding-right: 7px;
 }
 
-.current_txt {
-    /* visibility: hidden; */
+/* .current_txt {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-end;
     color: var(--light-green);
-    /* font-size: 2.5em; */
-}
+} */
 
 p {
     margin: 0;
     padding: 0;
-    font-size: 3em;
+    font-size: 2.5rem;
     color: var(--main-bg-color);
 }
 
@@ -300,6 +279,11 @@ p {
     box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
     border-radius: 10px;
     /* border: 1px inset var(--light-green); */
+}
+
+.highlight-operator {
+    background-color: white;
+    color: black;
 }
 
 
