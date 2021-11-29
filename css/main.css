@@ -61,7 +61,6 @@ html, body {
 /* ********************************* SCREEN CONTAINER ********************************* */
 .screen-container {
     flex: .75;
-    /* padding: 10px; */
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -88,7 +87,7 @@ p {
 
 /* ********************************* CLEAR CONTAINER ********************************* */
 .clear-container {
-    flex: .5;
+    flex: .35;
     display: flex;
     padding: 7px 0;
     gap: 7px;

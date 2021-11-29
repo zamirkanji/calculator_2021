@@ -15,6 +15,7 @@ const equalsBtn = document.querySelector('.equals-btn');
 const decimalBtn = document.querySelector('.btn-decimal');
 
 //********************************************** VARIABLES **********************************************
+const log = console.log;
 
 const divideOperator = ' / ';
 const multiplyOperator = ' * ';
@@ -57,7 +58,7 @@ function storeOperator_Num (number, operator) {
 //************************************* OPERATION FUNCTIONS ************************************ */
 
 const divideNums = (a, b) => {
-    console.log(a, b);
+    log(a, b);
     // let answer = Math.round((a / b));
     let answer = a / b;
     displayText.textContent = answer;
@@ -66,7 +67,7 @@ const divideNums = (a, b) => {
     return answer; 
 }
 const multiplyNums = (a, b) => {
-    console.log(a, b);
+    log(a, b);
     let answer = a * b;
     displayText.textContent = answer;
     numArr = [];
@@ -74,7 +75,7 @@ const multiplyNums = (a, b) => {
     return answer; 
 }
 const subtractNums = (a, b) => {
-    console.log(a, b);
+    log(a, b);
     let answer = a - b;
     displayText.textContent = answer;
     numArr = [];
@@ -82,7 +83,7 @@ const subtractNums = (a, b) => {
     return answer; 
 }
 const addNums = (a, b) => {
-    console.log(a, b);
+    log(a, b);
     let answer = +a + +b;
     displayText.textContent = answer;
     numArr = [];
@@ -163,7 +164,7 @@ decimalBtn.addEventListener('click', () => {
 
 equalsBtn.addEventListener('click', () => {
     numArr.push(+stringNums);
-    console.log(`Array value: ${numArr}`);
+    log(`Array value: ${numArr}`);
     operation(numArr[0], numArr[1]);
 });
 
