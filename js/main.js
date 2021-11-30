@@ -104,7 +104,7 @@ const addNums = (a, b) => {
     console.log(a, b);
     let answer = +a + +b;
     currentNum.textContent = `${+a}${String(additionOperator)}${+b} = ${answer}`;
-    input_output.textContent = answer;
+    input_output.textContent = answer; 
     return a + b; 
 }
 
