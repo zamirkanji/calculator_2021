@@ -1,3 +1,11 @@
+if (typeof window === 'object') {
+    // Check if document is finally loaded
+    document.addEventListener("DOMContentLoaded", function() {
+       displayNum();
+       keyEvent();
+    });
+ }
+
 //**************************************** SELECTORS ************************************************
 const displayText = document.querySelector('.display-text');
 const displayTextContainer = document.querySelector('.current_num_container');
@@ -26,6 +34,7 @@ const additionOperator = ' + ';
 // let displayInput = 0;
 // let displayCurrent = 0;
 let storeNumbers = [];
+let lastEntry;
 
 let displayNumber = '';
 
@@ -39,15 +48,26 @@ let equalsBtnClicked = false;
 
 //************************************ OPERAND BTN EVENTS/DISPLAY NUMBERS *************************************** */
 
+const keyEvent = () => {
+    document.addEventListener('keydown', e => {
+        log(e.key);
+    })
+}
+
 const displayNum = (e) => {
     clearEntry();
     decimalEventListener();
     plus_minusEventListener();
+    insertComma();
     allNumberBtns.forEach(btn =>  {
         btn.addEventListener('click', (e) => {
             if (displayNumber.length == 16) {
                 return;
-            } else {
+            } 
+            // else if (displayNumber.length == 3) {
+            //     displayNumber = displayNumber.substring(0, 1) + "," + displayNumber.substring(1, displayNumber.length);
+            // }
+            else {
                 let val = e.target.value;
                 displayText.textContent = val;
                 displayText.textContent = displayNumber +=  val;
@@ -68,17 +88,25 @@ function storeOperator_Num (number, operator) {
 const divideNums = (a, b) => {
     divideBtnClicked = false;
     log(a, b);
-    // let answer = Math.round((a / b));
     let answer = a / b;
-    displayText.textContent = answer;
-    storeNumbers = [];
-    displayNumber = answer;
-    return displayNumber; 
+        if (a % b === 0) {
+        displayText.textContent = answer;
+        storeNumbers = [];
+        displayNumber = answer;
+        return displayNumber; 
+    } else {
+        answer = answer.toFixed(4);
+        displayText.textContent = answer;
+        storeNumbers = [];
+        displayNumber = answer;
+        return displayNumber; 
+    }
 }
 const multiplyNums = (a, b) => {
     multiplyBtnClicked = false;
     log(a, b);
     let answer = a * b;
+
     displayText.textContent = answer;
     storeNumbers = [];
     displayNumber = answer;
@@ -139,8 +167,17 @@ const clearEntry = () => {
             if (displayNumber.length < 2 && displayNumber !== '0') {
                 displayNumber = '';
                 displayText.textContent = '0';
-            } else if (storeNumbers[storeNumbers.length >= 1]) {
-
+            } else if (displayText == '0' || displayText == '') {
+                return;
+                // lastEntry = storeNumbers[storeNumbers.length - 1].pop();
+                // displayText.textContent = 
+            } else if (equalsBtnClicked && displayText.length < 1 && storeNumbers[storeNumbers.length >= 1]) {
+                lastEntry = storeNumbers[storeNumbers.length - 1].pop();
+                displayText.textContent = storeNumbers[0];
+                if (storeNumbers === []) {
+                    displayText.textContent = '0';
+                }
+                log(storeNumbers);
             } else {
                 displayNumber = String(displayNumber).substring(0, displayNumber.length - 1);
                 displayText.textContent = displayNumber;
@@ -213,26 +250,41 @@ const plus_minusEventListener = () => {
     plus_minusBtn.addEventListener('click', () => {
         plus_minusBtnClicked = true;
         if (String(displayNumber).includes('-')) {
-            displayNumber = displayNumber.slice(0, 0);
+            displayNumber = displayNumber.replace(/^-+/i, ''); ;
             displayText.textContent = displayNumber;
-        } else {
+        } else if (displayNumber == '' || displayNumber == '0') {
+            displayText.textContent == '0';
+        } 
+        else {
             displayNumber = "-" + displayNumber;
             displayText.textContent = displayNumber;
         }
     });
 }
 
+const insertComma = () => {
+    // for (let i = 0; i < displayNumber.length; i++) {
+    //  let eachNumber =  log(displayNumber[i]);   
+    // }
+
+}
 //***************************** EQUALS BUTTON EVENT LISTENER ************************************ */
 
 equalsBtn.addEventListener('click', () => {
     equalsBtnClicked = true;
-    console.log(`displayNumber on equal: ${displayNumber}`);
-    storeNumbers.push(+displayNumber);
-    log(`Array value: ${storeNumbers}`);
-    operation(storeNumbers[0], storeNumbers[1]);
+    if (storeNumbers.length == 0) {
+        return;
+    } else {
+        log(`displayNumber on equal: ${displayNumber}`);
+        
+        storeNumbers.push(+displayNumber);
+        log(`Array value: ${storeNumbers}`);
+        operation(storeNumbers[0], storeNumbers[1]);
+    }
 });
 
 //CLEAR ALL BUTTON 
 clearAllBtn.addEventListener('click', clearAll);
 
-displayNum();
+// window.addEventListener('load', displayNum, false);
+// displayNum();
