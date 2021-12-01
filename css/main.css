@@ -45,7 +45,7 @@ html, body {
     /* width: 76px;
     height: 48px; */
     margin: 2px 0 0 2px;   
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgb(0, 0, 0);
     /* font-size: 21px; */
     color: #777;
   
@@ -140,10 +140,28 @@ html, body {
 .clear-all, .clear-entry {
     border: 2px solid var(--light-green);
     background-color: var(--light-green);
-    box-shadow: 2px 2px 3px 0 rgba(107, 68, 68, 0.3);
+    box-shadow: 2px 2px 3px 0 rgba(155, 206, 202, 0.6);
     border-radius: 10px;
     /* color: var(--main-bg-color); */
     color: black;
+}
+
+.clear-all:active {
+    margin: 2px 0 0 2px;   
+    border-bottom: 1px solid var(--light-green);
+    /* font-size: 21px; */
+    color: var(--main-bg-color);
+  
+    -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
+}
+
+.clear-entry:active {
+    margin: 2px 0 0 2px;   
+    border-bottom: 1px solid var(--light-green);
+    /* font-size: 21px; */
+    color: var(--main-bg-color);
+  
+    -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
 }
 
 .clear-entry {
