@@ -173,7 +173,7 @@ html, body {
 }
 
 .equals-container {
-    flex: 1;
+    flex: 1.5;
 }
 .equals-btn {
     border: 2px solid var(--light-green);

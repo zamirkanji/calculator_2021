@@ -35,6 +35,7 @@ const additionOperator = ' + ';
 // let displayCurrent = 0;
 let storeNumbers = [];
 let lastEntry;
+let operatorTemp;
 
 let displayNumber = '';
 
@@ -67,7 +68,7 @@ const displayNum = (e) => {
     insertComma();
     allNumberBtns.forEach(btn =>  {
         btn.addEventListener('click', (e) => {
-            // checkIfOperatorClicked();
+            checkIfOperatorClicked();
             if (displayNumber.length == 16) {
                 return;
             } else {
@@ -163,17 +164,21 @@ const addNums = (a, b) => {
 
 //**********************************OPERATION ************************************** */
 
-function operation (a, b) {
-    if (divideBtnClicked == true) {
+
+
+
+function operation (a, b, operator) {
+    log(operator);
+    if (operatorTemp === divideOperator) {
         divideBtn.classList.remove('highlight-operator');
         divideNums(a, b);
-    } else if (multiplyBtnClicked == true) {
+    } else if (operatorTemp === multiplyOperator) {
         multiplyBtn.classList.remove('highlight-operator');
         multiplyNums(a, b);
-    } else if (subtractBtnClicked == true) {
+    } else if (operatorTemp === subtractOperator) {
         subtractBtn.classList.remove('highlight-operator');
         subtractNums(a, b);
-    } else if (addBtnClicked == true) {
+    } else if (operatorTemp === additionOperator) {
         additionBtn.classList.remove('highlight-operator');
         addNums(a, b);
     } else {
@@ -229,6 +234,7 @@ divideBtn.addEventListener('click', (e) => {
         return;    
     } else {
         divideBtnClicked = true;
+        operatorTemp = divideOperator;
         divideBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
@@ -245,6 +251,7 @@ multiplyBtn.addEventListener('click', (e) => {
         return;
     } else {
         multiplyBtnClicked = true;
+        operatorTemp = multiplyOperator;
         multiplyBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
@@ -262,6 +269,7 @@ subtractBtn.addEventListener('click', (e) => {
         return;
     } else {
         subtractBtnClicked = true;
+        operatorTemp = subtractOperator;
         subtractBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
@@ -278,6 +286,7 @@ additionBtn.addEventListener('click', (e) => {
         return;
     } else {
         addBtnClicked = true;
+        operatorTemp = additionOperator;
         additionBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
@@ -319,12 +328,12 @@ const insertComma = () => {}
 //***************************** EQUALS BUTTON EVENT LISTENER ************************************ */
 
 equalsBtn.addEventListener('click', () => {
-    // if (storeNumbers.length === 1) {
-    //     let duplicate = storeNumbers[0];
-    //     storeNumbers.push(duplicate);
-    //     log(storeNumbers);
-    //     operation(storeNumbers[0], storeNumbers[1]);
-    // }
+    if (storeNumbers.length === 1 && (addBtnClicked || multiplyBtnClicked || subtractBtnClicked || divideBtnClicked)) {
+        let duplicate = storeNumbers[0];
+        storeNumbers.push(duplicate);
+        log(storeNumbers);
+        operation(storeNumbers[0], storeNumbers[1]);
+    }
     if (storeNumbers.length === 2) {
 
     }
@@ -333,10 +342,9 @@ equalsBtn.addEventListener('click', () => {
         return;
     } else {
         log(`displayNumber on equal: ${displayNumber}`);
-        
         storeNumbers.push(+displayNumber);
         log(`Array value: ${storeNumbers}`);
-        operation(storeNumbers[0], storeNumbers[1]);
+        operation(storeNumbers[0], storeNumbers[1], operatorTemp);
     }
 });
 
