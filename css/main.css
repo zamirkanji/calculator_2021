@@ -41,17 +41,6 @@ html, body {
     gap: 7px;
 }
 
-.calc-container:active {
-    /* width: 76px;
-    height: 48px; */
-    margin: 2px 0 0 2px;   
-    border-bottom: 1px solid rgb(0, 0, 0);
-    /* font-size: 21px; */
-    color: #777;
-  
-    -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
-}
-
 /* ********************************* ALL BTNS ********************************* */
 
 .btn {
@@ -90,7 +79,7 @@ html, body {
     margin: 2px 0 0 2px;   
     border-bottom: 1px solid #fff;
     /* font-size: 21px; */
-    color: #777;
+    color: var(--light-green);
   
     -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
 }
@@ -110,8 +99,9 @@ html, body {
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     padding-right: 7px;
+    padding-bottom: 7px;
 }
 
 .display-text {
