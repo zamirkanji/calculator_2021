@@ -67,13 +67,10 @@ const displayNum = (e) => {
     insertComma();
     allNumberBtns.forEach(btn =>  {
         btn.addEventListener('click', (e) => {
+            // checkIfOperatorClicked();
             if (displayNumber.length == 16) {
                 return;
-            } 
-            // else if (displayNumber.length == 3) {
-            //     displayNumber = displayNumber.substring(0, 1) + "," + displayNumber.substring(1, displayNumber.length);
-            // }
-            else {
+            } else {
                 let val = e.target.value;
                 displayText.textContent = val;
                 displayText.textContent = displayNumber +=  val;
@@ -81,6 +78,33 @@ const displayNum = (e) => {
         })
     })
     return displayNumber;
+}
+
+const checkIfOperatorClicked = () => {
+    if (divideBtnClicked) {
+        divideBtnClicked = false;
+        if (divideBtn.classList.contains('highlight-operator')) {
+            divideBtn.classList.remove('highlight-operator');
+        }
+    }
+    if (multiplyBtnClicked) {
+        multiplyBtnClicked = false;
+        if (multiplyBtn.classList.contains('highlight-operator')) {
+            multiplyBtn.classList.remove('highlight-operator');
+        }
+    }
+    if (addBtnClicked) {
+        addBtnClicked = false;
+        if (additionBtn.classList.contains('highlight-operator')) {
+            additionBtn.classList.remove('highlight-operator');
+        }
+    }
+    if (subtractBtnClicked) {
+        subtractBtnClicked = false;
+        if (subtractBtn.classList.contains('highlight-operator')) {
+            subtractBtn.classList.remove('highlight-operator');
+        }
+    }
 }
 //************************************* STORE NUMBER, OPERATOR ****************************** */
     
@@ -175,8 +199,6 @@ const clearEntry = () => {
                 displayText.textContent = '0';
             } else if (displayText == '0' || displayText == '') {
                 return;
-                // lastEntry = storeNumbers[storeNumbers.length - 1].pop();
-                // displayText.textContent = 
             } else if (equalsBtnClicked && displayText.length < 1 && storeNumbers[storeNumbers.length >= 1]) {
                 lastEntry = storeNumbers[storeNumbers.length - 1].pop();
                 displayText.textContent = storeNumbers[0];
@@ -194,14 +216,12 @@ const clearEntry = () => {
 
 //**************************** OPERATOR EVENT LISTENERS ************************************ */
 
-//if any operator button is pressed, one number in storeNumbers and displayNumber on screen, equate 
-
 divideBtn.addEventListener('click', (e) => {
-    if (addBtnClicked || subtractBtnClicked|| multiplyBtnClicked) {
-        storeNumbers.push(+displayNumber);
-        log(storeNumbers);
-        operation(storeNumbers[0], storeNumbers[1]);
-    }
+    // if (addBtnClicked || subtractBtnClicked|| multiplyBtnClicked) {
+    //     storeNumbers.push(+displayNumber);
+    //     log(storeNumbers);
+    //     operation(storeNumbers[0], storeNumbers[1]);
+    // }
     if (displayNumber === '0' || displayNumber === '') {
         displayText.textContent = NaN;
     }
@@ -216,11 +236,11 @@ divideBtn.addEventListener('click', (e) => {
     }
 });
 multiplyBtn.addEventListener('click', (e) => {
-    if (addBtnClicked || divideBtnClicked || subtractBtnClicked) {
-        storeNumbers.push(+displayNumber);
-        log(storeNumbers);
-        operation(storeNumbers[0], storeNumbers[1]);
-    }
+    // if (addBtnClicked || divideBtnClicked || subtractBtnClicked) {
+    //     storeNumbers.push(+displayNumber);
+    //     log(storeNumbers);
+    //     operation(storeNumbers[0], storeNumbers[1]);
+    // }
     if (displayNumber.length < 1) {
         return;
     } else {
@@ -228,15 +248,16 @@ multiplyBtn.addEventListener('click', (e) => {
         multiplyBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
+        log(storeNumbers);
         storeOperator_Num(displayNumber, multiplyOperator);
     }
 });
 subtractBtn.addEventListener('click', (e) => {
-    if (addBtnClicked || divideBtnClicked || multiplyBtnClicked) {
-        storeNumbers.push(+displayNumber);
-        log(storeNumbers);
-        operation(storeNumbers[0], storeNumbers[1]);
-    }
+    // if (addBtnClicked || divideBtnClicked || multiplyBtnClicked) {
+    //     storeNumbers.push(+displayNumber);
+    //     log(storeNumbers);
+    //     operation(storeNumbers[0], storeNumbers[1]);
+    // }
     if (displayNumber.length < 1) {
         return;
     } else {
@@ -248,12 +269,11 @@ subtractBtn.addEventListener('click', (e) => {
     }
 });
 additionBtn.addEventListener('click', (e) => {
-    if (subtractBtnClicked || divideBtnClicked || multiplyBtnClicked) {
-        storeNumbers.push(+displayNumber);
-        log(storeNumbers);
-        operation(storeNumbers[0], storeNumbers[1]);
-    }
-    log(storeNumbers);
+    // if (subtractBtnClicked || divideBtnClicked || multiplyBtnClicked) {
+    //     storeNumbers.push(+displayNumber);
+    //     log(storeNumbers);
+    //     operation(storeNumbers[0], storeNumbers[1]);
+    // }
     if (displayNumber.length < 1) {
         return;
     } else {
@@ -261,6 +281,7 @@ additionBtn.addEventListener('click', (e) => {
         additionBtn.classList.add('highlight-operator');
         log(`displayNumber on operator: ${displayNumber}`);
         storeNumbers.push(displayNumber);
+        log(storeNumbers);
         storeOperator_Num(displayNumber, additionOperator);
     }
 });
@@ -294,17 +315,21 @@ const plus_minusEventListener = () => {
     });
 }
 
-const insertComma = () => {
-    // for (let i = 0; i < displayNumber.length; i++) {
-    //  let eachNumber =  log(displayNumber[i]);   
-    // }
-
-}
+const insertComma = () => {}
 //***************************** EQUALS BUTTON EVENT LISTENER ************************************ */
 
 equalsBtn.addEventListener('click', () => {
+    // if (storeNumbers.length === 1) {
+    //     let duplicate = storeNumbers[0];
+    //     storeNumbers.push(duplicate);
+    //     log(storeNumbers);
+    //     operation(storeNumbers[0], storeNumbers[1]);
+    // }
+    if (storeNumbers.length === 2) {
+
+    }
     equalsBtnClicked = true;
-    if (storeNumbers.length == 0) {
+    if (storeNumbers.length === 0) {
         return;
     } else {
         log(`displayNumber on equal: ${displayNumber}`);
@@ -317,6 +342,3 @@ equalsBtn.addEventListener('click', () => {
 
 //CLEAR ALL BUTTON 
 clearAllBtn.addEventListener('click', clearAll);
-
-// window.addEventListener('load', displayNum, false);
-// displayNum();

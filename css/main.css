@@ -171,6 +171,27 @@ html, body {
     width: 50px;
     height: 50px;
 }
+
+.equals-container {
+    flex: 1;
+}
+.equals-btn {
+    border: 2px solid var(--light-green);
+    background-color: var(--light-green);
+    box-shadow: 2px 2px 2px 0 rgba(155, 206, 202, 0.6);
+    border-radius: 10px;
+    color: black;
+}
+.equals-btn:active {
+    /* width: 85px;
+    height: 88px; */
+    margin: 2px 0 0 2px;   
+    border-bottom: 1px solid var(--light-green);
+    /* font-size: 21px; */
+    color: var(--main-bg-color);
+  
+    -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
+}
 /* ********************************* BOTTOM CONTAINER ********************************* */
 
 .bottom-half-container {
@@ -298,27 +319,6 @@ html, body {
 }
 .addition-container {
     flex: 1;
-}
-.equals-container {
-    flex: 1.75;
-}
-.equals-btn {
-    border: 2px solid var(--light-green);
-    background-color: var(--light-green);
-    box-shadow: 2px 2px 2px 0 rgba(155, 206, 202, 0.6);
-    border-radius: 10px;
-    /* color: var(--main-bg-color); */
-    color: black;
-}
-.equals-btn:active {
-    /* width: 85px;
-    height: 88px; */
-    margin: 2px 0 0 2px;   
-    border-bottom: 1px solid var(--light-green);
-    /* font-size: 21px; */
-    color: var(--main-bg-color);
-  
-    -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
 }
 
 .operator {
