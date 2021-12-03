@@ -53,16 +53,13 @@ let equalsBtnClicked = false;
 
 const keyEvent = () => {
     document.addEventListener('keydown', e => {
-        // log(e.key);
         keyCodeNumber = e.key;
         if (keyCodeNumber === "1") {
-            log("you pressed 1");
-            // displayText.textContent = "1";
-            // displayText.textContent = displayNumber +=  "1";
             displayText.textContent = displayNumber += "1";
         } else if (keyCodeNumber === "2") {
-            // displayText.textContent = displayNumber +=  "2";
-            displayText.textContent = displayNumber;
+            displayText.textContent = displayNumber += "2";
+        } else if (keyCodeNumber === "3") {
+            displayText.textContent = displayNumber += '3';
         }
     })
 }
@@ -121,11 +118,11 @@ const checkEqualsBtnClicked = () => {
     if (equalsBtnClicked === false) {
         return;
     }
-    if (equalsBtnClicked === true && divideBtnClicked === false && multiplyBtnClicked === false && subtractBtnClicked === false && addBtnClicked === false) {
-        storeNumbers = [];
-        displayText.textContent = '0';
 
-    }
+    // if (equalsBtnClicked === true && divideBtnClicked === false && multiplyBtnClicked === false && subtractBtnClicked === false && addBtnClicked === false) {
+    //     storeNumbers = [];
+    //     displayText.textContent = '0';
+    // }
 }
 //************************************* STORE NUMBER, OPERATOR ****************************** */
     
@@ -146,7 +143,7 @@ const divideNums = (a, b) => {
         displayNumber = answer;
         return displayNumber; 
     } else {
-        answer = answer.toFixed(4);
+        // answer = answer.toFixed(4);
         displayText.textContent = answer;
         storeNumbers = [];
         displayNumber = answer;
@@ -347,19 +344,17 @@ const plus_minusEventListener = () => {
 }
 
 const insertComma = () => {}
+
 //***************************** EQUALS BUTTON EVENT LISTENER ************************************ */
 
 equalsBtn.addEventListener('click', () => {
+    equalsBtnClicked = true;
     if (storeNumbers.length === 1 && (addBtnClicked || multiplyBtnClicked || subtractBtnClicked || divideBtnClicked)) {
         let duplicate = storeNumbers[0];
         storeNumbers.push(duplicate);
         log(storeNumbers);
         operation(storeNumbers[0], storeNumbers[1]);
     }
-    if (storeNumbers.length === 2) {
-
-    }
-    equalsBtnClicked = true;
     if (storeNumbers.length === 0) {
         return;
     } else {
