@@ -58,11 +58,11 @@ html, body {
     text-decoration: none;
     background-color: white;
 
-    -webkit-transition: all .1s ease-in;
-    -moz-transition: all .1s ease-in;
-    -ms-transition: all .1s ease-in;
-    -o-transition: all .1s ease-in;
-    transition: all .1s ease-in;
+    -webkit-transition: all .05s ease-in;
+    -moz-transition: all .05s ease-in;
+    -ms-transition: all .05s ease-in;
+    -o-transition: all .05s ease-in;
+    transition: all .05s ease-in;
 }
 
 .btn:hover {
@@ -173,7 +173,7 @@ html, body {
 }
 
 .equals-container {
-    flex: 1.5;
+    flex: 2;
 }
 .equals-btn {
     border: 2px solid var(--light-green);

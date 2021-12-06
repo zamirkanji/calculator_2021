@@ -1,25 +1,25 @@
 if (typeof window === 'object') {
     // Check if document is finally loaded
-    document.addEventListener("DOMContentLoaded", function() {
-       displayNum();
-       keyEvent();
+    document.addEventListener("DOMContentLoaded", (e) => {
+        if (e.target == document.body) {
+            e.preventDefault();
+        }
+        displayNum();
+        keyEvent();
     });
  }
 
 //**************************************** SELECTORS ************************************************
 const displayText = document.querySelector('.display-text');
 const displayTextContainer = document.querySelector('.current_num_container');
-
 const allNumberBtns = document.querySelectorAll('.num-btn');
 const clearAllBtn = document.querySelector('.clear-all');
 const clearEntryBtn = document.querySelector('.clear-entry');
-
 const divideBtn = document.querySelector('.divide-btn');
 const multiplyBtn = document.querySelector('.multiply-btn');
 const subtractBtn = document.querySelector('.subtract-btn');
 const additionBtn = document.querySelector('.addition-btn');
 const equalsBtn = document.querySelector('.equals-btn');
-
 const decimalBtn = document.querySelector('.btn-decimal');
 const plus_minusBtn = document.querySelector('.btn-plus-minus');
 
@@ -31,14 +31,10 @@ const multiplyOperator = ' * ';
 const subtractOperator = ' - ';
 const additionOperator = ' + ';
 
-// let displayInput = 0;
-// let displayCurrent = 0;
 let storeNumbers = [];
 let lastEntry;
 let operatorTemp = null;
-
 let displayNumber = '';
-
 let keyCodeNumber;
 
 let addBtnClicked = false;
@@ -54,53 +50,56 @@ let numBtnClicked = false;
 
 const keyEvent = () => {
     document.addEventListener('keydown', e => {
+        log(e.key);
         keyCodeNumber = e.key;
-        if (keyCodeNumber === "1") {
-            displayText.textContent = displayNumber += "1";
-        } else if (keyCodeNumber === "2") {
-            displayText.textContent = displayNumber += "2";
-        } else if (keyCodeNumber === "3") {
-            displayText.textContent = displayNumber += '3';
-        } else if (keyCodeNumber === "4") {
-            displayText.textContent = displayNumber += '4';
-        } else if (keyCodeNumber === "5") {
-            displayText.textContent = displayNumber += '5';
-        } else if (keyCodeNumber === "6") {
-            displayText.textContent = displayNumber += '6';
-        } else if (keyCodeNumber === "7") {
-            displayText.textContent = displayNumber += '7';
-        } else if (keyCodeNumber === "8") {
-            displayText.textContent = displayNumber += '8';
-        } else if (keyCodeNumber === "9") {
-            displayText.textContent = displayNumber += '9';
-        } else if (keyCodeNumber === "0") {
-            displayText.textContent = displayNumber += '0';
-        } else if (keyCodeNumber === '=') {
-            displayText.textContent = '=';
+        if (displayNumber.length === 16) {
+            return;
+        }
+        if (e.code === 'Space' && e.target == document.body) {
+            e.preventDefault();
+            displayText.textContent = displayNumber += ' ';
+        }
+        switch (keyCodeNumber) {
+            case '+':
+                addBtnEvent();
+                break;
+            case '-':
+                subtractBtnEvent();
+                break;
+            case '/':
+                divideBtnEvent();
+                break;
+            case '+':
+                addBtnEvent();
+                break;
+            case 'Enter': 
+                equalsBtnEvent();
+                break;
+            default: 
+                displayText.textContent = keyCodeNumber;
+                displayText.textContent = displayNumber += keyCodeNumber;
         }
     })
 }
 
 const displayNum = (e) => {
-    keyEvent();
     clearEntry();
     decimalEventListener();
     plus_minusEventListener();
     insertComma();
-    allNumberBtns.forEach(btn =>  {
-        
+    allNumberBtns.forEach(btn =>  { 
         btn.addEventListener('click', (e) => {
             let val = e.target.value;
-            // equalsBtnClicked = false;
             numBtnClicked = true;
             checkIfOperatorClicked();
             checkEqualsBtnClicked();
+            // ********************
             if (operatorTemp == null && equalsBtnClicked == true) {
-                // return;
                 displayNumber = '';
                 operatorTemp = [];
                 displayText.textContent = val;
-                displayText.textContent = displayNumber +=  val;    
+                displayText.textContent = displayNumber +=  val; 
+            // **********************   
             } else {
                 equalsBtnClicked = false;
             }
@@ -155,12 +154,11 @@ const checkEqualsBtnClicked = () => {
     //     displayText.textContent = '0';
     // }
 }
-
-// const isAnswer = ()
 //************************************* STORE NUMBER, OPERATOR ****************************** */
     
 function showOperatorNum (number, operator) {
-    displayText.textContent = number + operator;
+    // displayText.textContent = number + operator;
+    displayText.textContent = number;
     displayNumber = '';
 }
 
@@ -178,7 +176,7 @@ const divideNums = (a, b) => {
         log(operatorTemp);
         return displayNumber; 
     } else {
-        // answer = answer.toFixed(4);
+        // answer = answer.toFixed(12);
         displayText.textContent = answer;
         storeNumbers = [];
         displayNumber = answer;
@@ -190,7 +188,7 @@ const multiplyNums = (a, b) => {
     resetOperatorTemp();
     log(a, b);
     let answer = a * b;
-
+    // answer = answer.toFixed(12);
     displayText.textContent = answer;
     storeNumbers = [];
     displayNumber = answer;
@@ -201,6 +199,7 @@ const subtractNums = (a, b) => {
     resetOperatorTemp();
     log(a, b);
     let answer = a - b;
+    // answer = answer.toFixed(12);
     displayText.textContent = answer;
     storeNumbers = [];
     displayNumber = answer;
@@ -211,6 +210,7 @@ const addNums = (a, b) => {
     resetOperatorTemp();
     log(a, b);
     let answer = Number(a) + Number(b);
+    // answer = answer.toFixed(12);
     displayText.textContent = answer;
     storeNumbers = [];
     displayNumber = answer;
@@ -218,9 +218,6 @@ const addNums = (a, b) => {
 }
 
 //**********************************OPERATION ************************************** */
-
-
-
 
 function operation (a, b, operator) {
     log(operator);
@@ -254,9 +251,9 @@ const clearEntry = () => {
         if (equalsBtnClicked && storeNumbers.length >= 0) {
             log(`pop out number`);
             log(storeNumbers, displayNumber);
-            // lastEntry = storeNumbers.pop(storeNumbers[storeNumbers.length - 1]);
-            displayText.textContent = displayNumber;
-            displayText.textContent = '0';
+            storeNumbers = [];
+            displayNumber = '';
+            displayText.textContent = 0;
         } 
         if (displayNumber == '') {
             return;
@@ -284,9 +281,8 @@ const clearEntry = () => {
     }) 
 }
 
-//**************************** OPERATOR EVENT LISTENERS ************************************ */
-
-divideBtn.addEventListener('click', (e) => {
+//************************************* OPERATOR EVENT LISTENERS ************************************ */
+const divideBtnEvent = (kc) => {
     if (storeNumbers.length === 2) {
         log(`already two in array: ${storeNumbers}`);
     }
@@ -308,8 +304,9 @@ divideBtn.addEventListener('click', (e) => {
         storeNumbers.push(displayNumber);
         showOperatorNum(displayNumber, divideOperator);
     }
-});
-multiplyBtn.addEventListener('click', (e) => {
+}
+
+const multiplyBtnEvent = (kc) => {
     if (storeNumbers.length === 1 && (operatorTemp === additionOperator || operatorTemp === multiplyOperator|| operatorTemp === subtractOperator || operatorTemp === divideOperator) && equalsBtnClicked == false) {
         storeNumbers.push(displayNumber);
         log(`test push: string of operators after one equals equation has been made ${storeNumbers}`);
@@ -332,8 +329,9 @@ multiplyBtn.addEventListener('click', (e) => {
         log(storeNumbers);
         showOperatorNum(displayNumber, multiplyOperator);
     }
-});
-subtractBtn.addEventListener('click', (e) => {
+}
+
+const subtractBtnEvent = (kc) => {
     if ((operatorTemp === additionOperator || operatorTemp === multiplyOperator|| operatorTemp === subtractOperator || operatorTemp === divideOperator) && equalsBtnClicked == false) {
         storeNumbers.push(+displayNumber);
         log(storeNumbers);
@@ -349,8 +347,9 @@ subtractBtn.addEventListener('click', (e) => {
         storeNumbers.push(displayNumber);
         showOperatorNum(displayNumber, subtractOperator);
     }
-});
-additionBtn.addEventListener('click', (e) => {
+}
+
+const addBtnEvent = (kc) => {
     if ((operatorTemp === additionOperator || operatorTemp === multiplyOperator|| operatorTemp === subtractOperator || operatorTemp === divideOperator) && equalsBtnClicked == false) {
         storeNumbers.push(+displayNumber);
         log(storeNumbers);
@@ -367,7 +366,9 @@ additionBtn.addEventListener('click', (e) => {
         log(storeNumbers);
         showOperatorNum(displayNumber, additionOperator);
     }
-});
+}    
+
+    
 
 //***************************DECIMAL AND PLUS MINUS EVENT LISTENERS ******************************
 
@@ -384,6 +385,7 @@ const decimalEventListener = () => {
 }
 const plus_minusEventListener = () => {
     plus_minusBtn.addEventListener('click', () => {
+        plus_minusBtn.classList.toggle('highlight-operator');
         plus_minusBtnClicked = true;
         if (String(displayNumber).includes('-')) {
             displayNumber = displayNumber.replace(/^-+/i, ''); ;
@@ -403,19 +405,20 @@ const insertComma = () => {
 }
 
 //***************************** EQUALS BUTTON EVENT LISTENER ************************************ */
-
-equalsBtn.addEventListener('click', () => {
+const equalsBtnEvent = (kc) => {
     equalsBtnClicked = true;
-    // resetOperatorTemp();
     log(`Equals btn pressed (True)`);
+    log(storeNumbers);
+    if(storeNumbers.length === 0) {
+        displayNumber = '';
+        displayText.textContent = 0;
+    }
     if (storeNumbers.length === 1 && (addBtnClicked || multiplyBtnClicked || subtractBtnClicked || divideBtnClicked)) {
         let duplicate = storeNumbers[0];
         storeNumbers.push(duplicate);
         log(storeNumbers);
         operation(storeNumbers[0], storeNumbers[1]);
     }
-    // if ()
-    // if (equalsBtnClicked === true &&)
     if (storeNumbers.length === 0) {
         return;
     } else {
@@ -424,7 +427,7 @@ equalsBtn.addEventListener('click', () => {
         log(`Array value: ${storeNumbers}`);
         operation(storeNumbers[0], storeNumbers[1], operatorTemp);
     }
-});
+}
 
 const resetOperatorTemp = () => {
     log('operator temp reset');
@@ -433,3 +436,10 @@ const resetOperatorTemp = () => {
 
 //CLEAR ALL BUTTON 
 clearAllBtn.addEventListener('click', clearAll);
+divideBtn.addEventListener('click', divideBtnEvent);
+multiplyBtn.addEventListener('click', multiplyBtnEvent);
+subtractBtn.addEventListener('click', subtractBtnEvent);
+additionBtn.addEventListener('click', addBtnEvent);
+equalsBtn.addEventListener('click', equalsBtnEvent);
+
+
