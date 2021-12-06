@@ -89,10 +89,23 @@ const displayNum = (e) => {
     insertComma();
     allNumberBtns.forEach(btn =>  { 
         btn.addEventListener('click', (e) => {
+            log(displayNumber.length);
             let val = e.target.value;
             numBtnClicked = true;
             checkIfOperatorClicked();
             checkEqualsBtnClicked();
+            // for (let i = 0; i < displayNumber.length; i++) {
+            //     log(i);
+            //     if (i % 2 == 0 && i !== 0 && i !== 1 && i !== 2) {
+            //         log('this is where to put comma');
+            //     }
+            // }
+            // if (displayNumber.length === 3) {
+            //     displayNumber = displayNumber.substring(0, 1) + ',' + displayNumber.substring(1);
+            // }
+            // if (displayNumber.length === 7) {
+            //     displayNumber = displayNumber.substring(0, 5) + ',' + displayNumber.substring(5);
+            // }
             // ********************
             if (operatorTemp == null && equalsBtnClicked == true) {
                 displayNumber = '';
