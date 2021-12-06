@@ -35,7 +35,7 @@ const additionOperator = ' + ';
 // let displayCurrent = 0;
 let storeNumbers = [];
 let lastEntry;
-let operatorTemp;
+let operatorTemp = null;
 
 let displayNumber = '';
 
@@ -88,18 +88,28 @@ const displayNum = (e) => {
     plus_minusEventListener();
     insertComma();
     allNumberBtns.forEach(btn =>  {
+        
         btn.addEventListener('click', (e) => {
-            equalsBtnClicked = false;
+            let val = e.target.value;
+            // equalsBtnClicked = false;
             numBtnClicked = true;
             checkIfOperatorClicked();
             checkEqualsBtnClicked();
+            if (operatorTemp == null && equalsBtnClicked == true) {
+                // return;
+                displayNumber = '';
+                operatorTemp = [];
+                displayText.textContent = val;
+                displayText.textContent = displayNumber +=  val;    
+            } else {
+                equalsBtnClicked = false;
+            }
             if (e.target.value == 0 && (displayNumber == '0' || displayNumber == '')) {
                 return;
             }
             if (displayNumber.length == 16) {
                 return;
             } else {
-                let val = e.target.value;
                 displayText.textContent = val;
                 displayText.textContent = displayNumber +=  val;
             }
@@ -145,6 +155,8 @@ const checkEqualsBtnClicked = () => {
     //     displayText.textContent = '0';
     // }
 }
+
+// const isAnswer = ()
 //************************************* STORE NUMBER, OPERATOR ****************************** */
     
 function showOperatorNum (number, operator) {
@@ -156,12 +168,14 @@ function showOperatorNum (number, operator) {
 
 const divideNums = (a, b) => {
     divideBtnClicked = false;
+    resetOperatorTemp();
     log(a, b);
     let answer = a / b;
         if (a % b === 0) {
         displayText.textContent = answer;
         storeNumbers = [];
         displayNumber = answer;
+        log(operatorTemp);
         return displayNumber; 
     } else {
         // answer = answer.toFixed(4);
@@ -173,6 +187,7 @@ const divideNums = (a, b) => {
 }
 const multiplyNums = (a, b) => {
     multiplyBtnClicked = false;
+    resetOperatorTemp();
     log(a, b);
     let answer = a * b;
 
@@ -183,6 +198,7 @@ const multiplyNums = (a, b) => {
 }
 const subtractNums = (a, b) => {
     subtractBtnClicked = false;
+    resetOperatorTemp();
     log(a, b);
     let answer = a - b;
     displayText.textContent = answer;
@@ -192,6 +208,7 @@ const subtractNums = (a, b) => {
 }
 const addNums = (a, b) => {
     addBtnClicked = false;
+    resetOperatorTemp();
     log(a, b);
     let answer = Number(a) + Number(b);
     displayText.textContent = answer;
@@ -234,6 +251,13 @@ const clearAll = () => {
 
 const clearEntry = () => {
     clearEntryBtn.addEventListener('click', () => {
+        if (equalsBtnClicked && storeNumbers.length >= 0) {
+            log(`pop out number`);
+            log(storeNumbers, displayNumber);
+            // lastEntry = storeNumbers.pop(storeNumbers[storeNumbers.length - 1]);
+            displayText.textContent = displayNumber;
+            displayText.textContent = '0';
+        } 
         if (displayNumber == '') {
             return;
         } else { 
@@ -243,6 +267,7 @@ const clearEntry = () => {
             } else if (displayText == '0' || displayText == '') {
                 return;
             } else if (equalsBtnClicked && displayText.length < 1 && storeNumbers[storeNumbers.length >= 1]) {
+                log(`pop out number`);
                 lastEntry = storeNumbers[storeNumbers.length - 1].pop();
                 //check this***************
                 displayText.textContent = storeNumbers[0];
@@ -256,7 +281,7 @@ const clearEntry = () => {
                 displayText.textContent = displayNumber;
             }
         }
-    })  
+    }) 
 }
 
 //**************************** OPERATOR EVENT LISTENERS ************************************ */
@@ -271,7 +296,7 @@ divideBtn.addEventListener('click', (e) => {
         operation(storeNumbers[0], storeNumbers[1]);
     }
     if (displayNumber === '0' || displayNumber === '') {
-        displayText.textContent = NaN;
+        displayText.textContent = 'Error';
     }
     if (displayNumber.length < 1) {
         return;    
@@ -381,6 +406,7 @@ const insertComma = () => {
 
 equalsBtn.addEventListener('click', () => {
     equalsBtnClicked = true;
+    // resetOperatorTemp();
     log(`Equals btn pressed (True)`);
     if (storeNumbers.length === 1 && (addBtnClicked || multiplyBtnClicked || subtractBtnClicked || divideBtnClicked)) {
         let duplicate = storeNumbers[0];
@@ -399,6 +425,11 @@ equalsBtn.addEventListener('click', () => {
         operation(storeNumbers[0], storeNumbers[1], operatorTemp);
     }
 });
+
+const resetOperatorTemp = () => {
+    log('operator temp reset');
+    return operatorTemp = null;
+}
 
 //CLEAR ALL BUTTON 
 clearAllBtn.addEventListener('click', clearAll);
